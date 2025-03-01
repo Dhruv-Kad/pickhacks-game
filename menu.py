@@ -50,3 +50,12 @@ def setup2():
     while (p2ycoord < 1 or p2xcoord > 87):
         p2ycoord = int(input("Please select a valid coordinate: "))
 menu()
+
+# print(f"{'|':-^59}")
+# print(f"{'   /\\':<29} {'/\\   ':>29}")
+# print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
+# print(f"{' /    \\':<29} {'/    \\ ':>29}")
+# print(f"{'|':-^59}")
+# print(f"{'1. 1 Player':^59}")
+# print(f"{'2. 2 Player':^59}")
+# print(f"{'3. Exit':^59}")
