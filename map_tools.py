@@ -1,4 +1,6 @@
 from math import sqrt
+from time import sleep
+import animation
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 24
@@ -77,9 +79,12 @@ def print_tension(tension):
 # Bombs the target (x, y) coordinates with desired radius
 # Does not affect water
 def bomb(x, y, r):
+    for coords in animation.parabola(x, y, -6, 3):
+        swapchar(*coords, "⥀")
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, "▒")
+    
 
 def build_factory(x, y):
     swapchar(y, x, "▚")
