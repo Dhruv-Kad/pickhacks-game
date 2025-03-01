@@ -88,7 +88,7 @@ def print_hud():
     print(f"{'TURN ' + str(turn_counter):^89}")
     print()
     print(f"${p1_money} | +${p1_income}/t")
-    print(f"{p1_spies * 1:.2f}% chance to reveal enemy base")
+    print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
     spy_work(p1_spies)
     print()
 
