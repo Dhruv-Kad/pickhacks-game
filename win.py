@@ -1,4 +1,5 @@
 import time
+import credits
 def youwin():
     usa = ("""
 
@@ -49,6 +50,10 @@ def youwin():
     for line in wintext.splitlines():
         print(line)
         time.sleep(delay+0.1)
-
+    credito = credits.printcredits()
+    for line in credito.splitlines():
+        print(line)
+        time.sleep(delay+0.1)
 if __name__ == "__main__":
     youwin()
+
