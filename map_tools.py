@@ -71,9 +71,15 @@ def print_map():
 #   WAR   #
 # ------- #
 
+def print_tension(tension):
+    print(f"{'TENSION [' + '●' * (tension) + '○' * (9 - tension) + ']':^89}")
+
 # Bombs the target (x, y) coordinates with desired radius
 # Does not affect water
 def bomb(x, y, r):
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, "▒")
+
+def build_factory(x, y):
+    swapchar(y, x, "▚")
