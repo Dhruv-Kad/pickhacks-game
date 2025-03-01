@@ -1,5 +1,6 @@
 import map_tools
 import os
+import key
 
 # def char_to_num(char):
 #     return ord(char) - 65
@@ -25,10 +26,9 @@ def menu():
 
 #ASks for coordinate for stater base
 def p1coord_validation():
-    base_place_pass = 0 
     os.system('cls' if os.name == 'nt' else 'clear')
     map_tools.print_map()
-    while (base_place_pass == 0):
+    while (True):
         print ("Please select the coordinates for your base")
         p1ycoord = input("Y Coordinate: ")
         while ((p1ycoord.upper() not in char_to_num.keys()) or (not p1ycoord.isalpha()) ):
@@ -43,18 +43,17 @@ def p1coord_validation():
             os.system('cls' if os.name == 'nt' else 'clear')
             map_tools.print_map()
             p1xcoord = (input("Please select a valid X coordinate: "))
-        if (map_tools.get_char(int(p1xcoord), int(p1xcoord)) != "█"):
+        if (map_tools.get_char(int(p1xcoord), int(p1yletter_coord)) != key.land):
             os.system('cls' if os.name == 'nt' else 'clear')
             map_tools.print_map()
             print ("Not a vlid placement coordinate.")
             print ("please try again.")
         else:
-            base_place_pass += 1
+            map_tools.swapchar(int(p1xcoord), int(p1yletter_coord), "B")
+            break
         
-        map_tools.swapchar(int(p1xcoord), int(p1yletter_coord), "B")
-
-        os.system('cls' if os.name == 'nt' else 'clear')
-        map_tools.print_map()
+        # os.system('cls' if os.name == 'nt' else 'clear')
+        # map_tools.print_map()
 
 def setup1():
 #asks for difficulty
@@ -100,4 +99,4 @@ def setup2():
     p2ycoord = int(input("Y Coordinate: "))
     while (p2ycoord < 1 or p2xcoord > 87):
         p2ycoord = int(input("Please select a valid coordinate: "))
-menu()
+# menu()

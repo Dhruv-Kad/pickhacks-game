@@ -63,7 +63,7 @@ def print_hud():
 
 
 # show menu
-menu.
+menu.menu()
 
 
 while True:
