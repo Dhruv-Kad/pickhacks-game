@@ -8,7 +8,6 @@ p1_money = 750
 p1_income = 250
 p1_spies = 0
 
-# the interpreter shits itself if i don't have this as a parameter
 def thing():
     print("1. nuke")
     print("2. spy")
@@ -22,6 +21,7 @@ def thing():
             x = int(input("enter nuke x: "))
             y = int(input("enter nuke y: "))
             bomb(x, y, 3)
+            global tension
             tension = 9
 
         case 2:
@@ -42,7 +42,7 @@ def print_data():
 
 while True:
     # this just clears the terminal
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # os.system('cls' if os.name == 'nt' else 'clear')
     
     p1_money += p1_income
 
