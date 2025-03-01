@@ -27,18 +27,29 @@ def setup1():
     print ("----------Hard----------")
     print()
 
+    base_place_pass = 0
+
     difficulty = input("Difficulty: ")
     while (difficulty.upper() not in difficulties):
         difficulty = int(input("Please select a valid difficulty: "))
     print()
-    print ("Please select the coordinates for your character")
-    p1xcoord = int(input("X Coordinate: "))
-    while (p1xcoord < 1 or p1xcoord > 24):
-        p1xcoord = int(input("Please select a valid coordinate: "))
-    p1ycoord = int(input("Y Coordinate: "))
-    while (p1ycoord < 1 or p1xcoord > 87):
-        p1ycoord = int(input("Please select a valid coordinate: "))
+    while (base_place_pass == 0):
+        print ("Please select the coordinates for your character")
+        p1xcoord = int(input("X Coordinate: "))
+        while (p1xcoord < 1 or p1xcoord > 24):
+            p1xcoord = int(input("Please select a valid coordinate: "))
+        p1ycoord = int(input("Y Coordinate: "))
+        while (p1ycoord < 1 or p1xcoord > 87):
+            p1ycoord = int(input("Please select a valid coordinate: "))
+        if (map_tools.get_char(p1xcoord, p1ycoord) != "█"):
+            print ("Not a vlid placement coordinate.")
+            print ("please try again.")
+        else:
+            base_place_pass += 1
+            
+    
 
+#unused
 def setup2():
     print ("Please select the coordinates for your character")
     p1xcoord = int(input("X Coordinate: "))
@@ -57,12 +68,3 @@ def setup2():
     while (p2ycoord < 1 or p2xcoord > 87):
         p2ycoord = int(input("Please select a valid coordinate: "))
 menu()
-
-# print(f"{'|':-^59}")
-# print(f"{'   /\\':<29} {'/\\   ':>29}")
-# print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
-# print(f"{' /    \\':<29} {'/    \\ ':>29}")
-# print(f"{'|':-^59}")
-# print(f"{'1. 1 Player':^59}")
-# print(f"{'2. 2 Player':^59}")
-# print(f"{'3. Exit':^59}")
