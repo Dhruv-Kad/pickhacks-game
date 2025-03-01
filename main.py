@@ -49,6 +49,7 @@ def shop():
             if p1_money >= p1_factory_price:
                 p1_money -= p1_factory_price
                 x, y = coordinate_entry("Enter factory coordinates: ")
+                # hardcoded to p1 right now
                 build_factory(x, y, 1)
                 global p1_income
                 p1_income += 150
@@ -58,6 +59,8 @@ def shop():
             if p1_money >= (coup_base_price * (0.5 * coup_level + 0.5)):
                 p1_money -= (coup_base_price * (0.5 * coup_level + 0.5))
                 x, y = coordinate_entry("Enter coup coordinates: ")
+                # hardcoded to p1 right now
+                coup(x, y, coup_level, 1)
 
 # Prints the hud
 # Contains (top to bottom) world map, tension meter, income, spy effectiveness
@@ -69,7 +72,6 @@ def print_hud():
     print()
 
 # show menu
-coordinate_entry("enter in format A1: ")
 menu.menu()
 
 while True:
