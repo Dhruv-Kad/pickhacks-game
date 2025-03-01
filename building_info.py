@@ -2,11 +2,11 @@ import map_tools
 import key
 
 class building:
-    # buidling type can either be "bunker" or "factory"
+    # buidling type can either be "base" or "factory"
     # visibility can be True or False
     # ownership should be a 1 or 2
 
-    def __init__(self,xcoord,ycoord,buildingType,visibility, ownership):
+    def __init__(self, xcoord, ycoord, buildingType, visibility, ownership):
         self.xcoord = xcoord
         self.ycoord = ycoord
         self.buildingType = buildingType
