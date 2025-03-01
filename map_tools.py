@@ -5,7 +5,9 @@ import key
 from building_info import building
 import re
 from random import randint
+from random import choice
 import os
+
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -211,3 +213,23 @@ def coordinate_entry(message):
                 return x, y
         except:
             continue
+
+
+def spy_addition(numberofspies, oldprice):
+    oldprice += 500
+    numberofspies += 1  
+
+def spy_work(numberofspies):
+    
+    spy_find_nums = []
+    if (numberofspies > 0):
+        i = 1
+        while (i <= numberofspies):
+            spy_find_nums.append(i)
+            i += 1
+        selected = randint(1,100)
+        if (selected in spy_find_nums):
+            found_base = choice(p2_bases)
+            swapchar(found_base.xcoord, found_base.ycoord, "▣")
+        else:
+            print("Your spies have found nothing so far.")
