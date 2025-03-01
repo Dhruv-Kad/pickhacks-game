@@ -1,5 +1,8 @@
-# 24 rows
-# 87 columns
+# These need to be one less the actual dimensions because reasons
+# 6x6 grid = 5 and 5. stupid dumb.
+board_width = 24
+board_height = 86
+
 worldMap = [
 '################################+#+####################################################',
 '#################++###++####++++++++#####################+++++#########################',
@@ -27,13 +30,24 @@ worldMap = [
 '#####################+#################################################################',
 '#######################################################################################']
 
-
+# Swaps a character on the map given (x, y) coordinates and the character to replace with
+# Returns the old character, probably useful for animation
 def swapchar(xcoord,ycoord,char):
     temp = list(worldMap[ycoord])
     oldChar = temp[xcoord]
     temp[xcoord] = char
     worldMap[ycoord] = ''.join(temp)
     return oldChar
+
+# Returns a list of all points within the radius of a point
+# Takes in (x, y), radius, and board
+def get_coords_in_circle(x, y, r, board):
+    coords_list = []
+    for i in range(target_x - r, target_x + r + 1):
+        for j in range(target_y - r, target_y + r + 1):
+            if get_dist(i, x, j, y) <= r and 0 <= i <= board_width and 0 <= j <= board_height:
+                coords_list.append((j, i))
+    return coords_list
 
 swapchar(1,1,'&')
 
