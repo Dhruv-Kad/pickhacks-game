@@ -40,10 +40,11 @@ def parabola(ex, ey, x_offset, y_offset):
     coord_list = []
     # map width
     for i in range(ex + 1):
+        # ax^2 + bx + c
         fx = x * (i ** 2) + (y * i) + z
         # map height - 1
         if 0 <= fx <= 24:
-            coord_list.append((round(fx), i))
+            coord_list.append((i, round(fx)))
 
     return coord_list
 

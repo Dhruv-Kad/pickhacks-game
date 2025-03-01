@@ -3,8 +3,8 @@ from time import sleep
 import animation
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
-board_width = 24
-board_height = 86
+board_width = 86
+board_height = 24
 
 worldMap = [
 '................................█.█....................................................',
@@ -39,15 +39,15 @@ worldMap = [
 
 # Gets the character at (x, y) coordinates
 def get_char(x, y):
-    return worldMap[x][y]
+    return worldMap[y][x]
 
 # Swaps a character on the map given (x, y) coordinates and the character to replace with
 # Returns the old character, probably useful for animation
 def swapchar(xcoord,ycoord,char):
-    temp = list(worldMap[xcoord])
-    oldChar = temp[ycoord]
-    temp[ycoord] = char
-    worldMap[xcoord] = ''.join(temp)
+    temp = list(worldMap[ycoord])
+    oldChar = temp[xcoord]
+    temp[xcoord] = char
+    worldMap[ycoord] = ''.join(temp)
     return oldChar
 
 # Returns a list of all points within the radius of a point
@@ -56,8 +56,8 @@ def get_coords_in_circle(x, y, r):
     coords_list = []
     for i in range(x - r, x + r + 1):
         for j in range(y - r, y + r + 1):
-            if get_dist(i, x, j, y) <= r and 0 <= i <= board_height and 0 <= j <= board_width:
-                coords_list.append((j, i))
+            if get_dist(i, x, j, y) <= r and 0 <= i <= board_width and 0 <= j <= board_height:
+                coords_list.append((i, j))
     return coords_list
 
 # Gets the distance between two (x, y) coordinates
@@ -83,8 +83,9 @@ def print_tension(tension):
 # Bombs the target (x, y) coordinates with desired radius
 # Does not affect water
 def bomb(x, y, r):
-    for coords in animation.parabola(x, y, -6, 3):
+    for coords in animation.parabola(x, y, -6, -3):
         swapchar(*coords, "⥀")
+    print(get_coords_in_circle(x, y, r))
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, "▒")
