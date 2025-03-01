@@ -36,7 +36,7 @@ def p1coord_validation():
             map_tools.print_map()
             p1ycoord = input("Please select a valid Y coordinate: ")
         
-        p1letter_coord = char_to_num[p1ycoord.upper()]
+        p1yletter_coord = char_to_num[p1ycoord.upper()]
 
         p1xcoord = input("X Coordinate: ")
         while ((not p1xcoord.isnumeric()) or (int(p1xcoord) < 0) or (int(p1xcoord) > 86)):
@@ -51,7 +51,7 @@ def p1coord_validation():
         else:
             base_place_pass += 1
         
-        map_tools.swapchar(int(p1xcoord), int(p1ycoord), "B")
+        map_tools.swapchar(int(p1xcoord), int(p1yletter_coord), "B")
 
         os.system('cls' if os.name == 'nt' else 'clear')
         map_tools.print_map()
