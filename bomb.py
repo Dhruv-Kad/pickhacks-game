@@ -10,8 +10,8 @@ board = [[".", ".", ".", ".", ".", "."],
 
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
-board_width = 5
-board_height = 5
+board_width = 86
+board_height = 24
 
 # Gets distance given two sets of coordinates, (x1, y1) and (x2, y2)
 # First set of coordinates is bomb target coordinates
@@ -37,7 +37,7 @@ print_board(board)
 
 target_x = 3
 target_y = 3
-radius = 2
+radius = 1
 
 bomb(target_x, target_y, radius, board)
 
