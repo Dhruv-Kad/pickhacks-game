@@ -3,6 +3,7 @@ from time import sleep
 import animation
 import key
 from building_info import building
+import re
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -139,3 +140,13 @@ def build_base(x, y, player):
     factory = building(x, y, "base", False, 2)
     p2_bases.append(factory)
     return
+
+def coordinate_entry(message):
+    inpt = input(message)
+    regex = re.search(r"([A-Y])(\d+)", inpt)
+    x = regex.group(2)
+    y = char_to_num(regex.group(1))
+    return (x, y)
+
+def char_to_num(char):
+    return ord(char) - 65
