@@ -28,7 +28,7 @@ def p1coord_validation():
     os.system('cls' if os.name == 'nt' else 'clear')
     map_tools.print_map()
     while (True):
-        x, y = map_tools.coordinate_entry("Please select the coordinates for your base: ")
+        x, y = map_tools.coordinate_entry("Please select the coordinates for your first base: ")
         map_tools.swapchar(x, y, "B")
         break
         #print ("Please select the coordinates for your base: ")

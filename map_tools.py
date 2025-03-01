@@ -5,6 +5,7 @@ import key
 from building_info import building
 import re
 from random import randint
+import os
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -57,7 +58,7 @@ def swapchar(xcoord,ycoord,char):
     oldChar = temp[xcoord]
     temp[xcoord] = char
     worldMap[ycoord] = ''.join(temp)
-    return oldChar
+    return oldChar, xcoord, ycoord
 
 # Returns a list of all points within the radius of a point
 # Takes in (x, y), radius, and board
@@ -92,11 +93,18 @@ def print_tension(tension):
 # Bombs the target (x, y) coordinates with desired radius
 # Does not affect water
 def bomb(x, y, r):
-    # Parabola will be unused for now, I want to get the game actually working
-    #   before adding fancy animations. it's just clutter right now
-    # parabola_coords = animation.parabola(x, y, -6, -3)
-    # for coords in animation.parabola(x, y, -6, -3):
-    #     swapchar(*coords, "⥀")
+    # surprised this worked on the first attempt
+    parabola_coords = animation.parabola(x, y, -6, -3)
+    old_char, old_x, old_y = key.water, 0, 0
+    for coords in animation.parabola(x, y, -6, -3):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_map()
+        swapchar(old_x, old_y, old_char)
+        old_char, old_x, old_y = swapchar(*coords, "⥀")
+        print(old_char)
+        sleep(0.075)
+    
+    # actual non animation bomb code
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, key.land_nuked)
@@ -170,7 +178,7 @@ def build_factory(x, y, player):
         return
     
     swapchar(x, y, key.p2_factory)
-    f"f{x}-{y}" = building(x, y, "factory", True, 2)
+    factory = building(x, y, "factory", True, 2)
     p2_factories.append(factory)
     return
 
@@ -183,14 +191,14 @@ def build_base(x, y, player):
         return
     
     swapchar(x, y, key.p2_base)
-    f"b{x}-{y}" = building(x, y, "base", False, 2)
+    base = building(x, y, "base", False, 2)
     p2_bases.append(factory)
     return
 
 # Prompts the user for coordinates with the message parameter
 # Returns x, y coordinates
 # EX: C20 -> 20, 2
-# Does not allow water placement
+# Does not allow water or radiation placement
 def coordinate_entry(message):
     while True:
         inpt = input(message)
@@ -198,7 +206,7 @@ def coordinate_entry(message):
         try:
             x = int(regex.group(2))
             y = ord(regex.group(1).upper()) - 65
-            if get_char(x, y) != key.water:
+            if get_char(x, y) not in [key.water, key.land_nuked]:
                 return x, y
         except:
             continue
