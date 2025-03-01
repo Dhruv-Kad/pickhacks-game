@@ -79,9 +79,11 @@ def print_tension(tension):
 # Bombs the target (x, y) coordinates with desired radius
 # Does not affect water
 def bomb(x, y, r):
-    for coords in animation.parabola(x, y, -6, -3):
-        swapchar(*coords, "⥀")
-    print(get_coords_in_circle(x, y, r))
+    # Parabola will be unused for now, I want to get the game actually working
+    #   before adding fancy animations. it's just clutter right now
+    # parabola_coords = animation.parabola(x, y, -6, -3)
+    # for coords in animation.parabola(x, y, -6, -3):
+    #     swapchar(*coords, "⥀")
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, "▒")
