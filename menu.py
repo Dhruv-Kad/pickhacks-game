@@ -1,4 +1,6 @@
-import worldMap
+import map_tools
+
+difficulties = ["EASY", "MEDIUM", "HARD"]
 
 def menu():
     print ("-----------------------------|-----------------------------")
@@ -24,6 +26,12 @@ def setup1():
     print ("----------Easy----------")
     print ("---------Medium---------")
     print ("----------Hard----------")
+    print()
+    
+    difficulty = input("Difficulty: ")
+    while (difficulty.upper() not in difficulties):
+        difficulty = int(input("Please select a valid difficulty: "))
+    print()
     print ("Please select the coordinates for your character")
     p1xcoord = int(input("X Coordinate: "))
     while (p1xcoord < 1 or p1xcoord > 24):
