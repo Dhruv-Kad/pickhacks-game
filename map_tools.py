@@ -4,6 +4,7 @@ import animation
 import key
 from building_info import building
 import re
+from random import randint
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -103,6 +104,8 @@ def bomb(x, y, r):
 def coup(x,y,level,player):
     radius = 0
     challenge = False
+    savedX = 0
+    savedY = 0
 
     if(level == 1):
         #50/50 chance
@@ -114,18 +117,41 @@ def coup(x,y,level,player):
         #90% chance
         radius = 1
     coup_coords = get_coords_in_circle(x,y,radius)
+    
     for coords in coup_coords:
         for base in p2_bases:
             if((base.xcoord == coords[0]) and (base.ycoord == coords[1])):
+                savedX = coords[0]
+                savedY = coords[1]
                 challenge = True
 
     if(challenge):
+        success = True
         if(level == 1):
-            ldsfjalkfdj
+            if(randint(1,2) == 1):
+                success = False
         elif(level == 2):
-            al;jflkd
+            temp = randint(1,10)
+            if(temp == 1 or temp == 2 or temp == 3):
+                success = False
         else:
-            da;jf;lkasfd
+            temp = randint(1,10)
+            if(temp == 1):
+                success = False
+
+        if(success):
+            build_base(x,y,player)
+            #delete player 2 base where conflict is
+            baseIndex = 0
+            for i in range(0,len(p2_bases)):
+                if((savedX == p2_bases[i].xcoord) and (savedY == p2_bases[i].ycoord)):
+                    baseIndex = i
+                
+            p2_bases.pop(baseIndex)
+        else:
+            swapchar(savedX,savedY,'▣')
+
+
     else:
         build_base(x,y,player)
 
@@ -144,7 +170,7 @@ def build_factory(x, y, player):
         return
     
     swapchar(x, y, key.p2_factory)
-    factory = building(x, y, "factory", True, 2)
+    f"f{x}-{y}" = building(x, y, "factory", True, 2)
     p2_factories.append(factory)
     return
 
@@ -156,7 +182,7 @@ def build_base(x, y, player):
         return
     
     swapchar(x, y, key.p2_base)
-    factory = building(x, y, "base", False, 2)
+    f"b{x}-{y}" = building(x, y, "base", False, 2)
     p2_bases.append(factory)
     return
 
