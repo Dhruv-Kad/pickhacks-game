@@ -1,12 +1,14 @@
 import map_tools
 import os
 
+# def char_to_num(char):
+#     return ord(char) - 65
 char_to_num = {'A': '0', 'B': '1', 'C': '2', 'D': '3', 'E': '4', 'F': '5', 'G': '6', 'H': '7', 'I': '8', 'J': '9', 'K': '10', 'L': '11', 'M': '12', 'N': '13', 'O': '14', 'P': '15', 'Q': '16', 'R': '17', 'S': '18', 'T': '19', 'U': '20', 'V': '21', 'W': '22', 'X': '23', 'Y': '24'}
 
 difficulties = ["EASY", "MEDIUM", "HARD"]
 
 def menu():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(f"{'|':-^59}")
     print(f"{'   /\\':<29} {'/\\   ':>29}")
     print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
@@ -24,13 +26,13 @@ def menu():
 #ASks for coordinate for stater base
 def p1coord_validation():
     base_place_pass = 0 
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
     map_tools.print_map()
     while (base_place_pass == 0):
-        print ("Please select the coordinates for your character")
+        print ("Please select the coordinates for your base")
         p1ycoord = input("Y Coordinate: ")
         while ((p1ycoord.upper() not in char_to_num.keys()) or (not p1ycoord.isalpha()) ):
-            os.system('cls')
+            os.system('cls' if os.name == 'nt' else 'clear')
             map_tools.print_map()
             p1ycoord = input("Please select a valid Y coordinate: ")
         
@@ -38,25 +40,25 @@ def p1coord_validation():
 
         p1xcoord = input("X Coordinate: ")
         while ((not p1xcoord.isnumeric()) or (int(p1xcoord) < 0) or (int(p1xcoord) > 86)):
-            os.system('cls')
+            os.system('cls' if os.name == 'nt' else 'clear')
             map_tools.print_map()
             p1xcoord = (input("Please select a valid X coordinate: "))
         if (map_tools.get_char(int(p1xcoord), int(p1xcoord)) != "█"):
-            os.system('cls')
+            os.system('cls' if os.name == 'nt' else 'clear')
             map_tools.print_map()
             print ("Not a vlid placement coordinate.")
             print ("please try again.")
         else:
             base_place_pass += 1
         
-        map_tools.swapchar(int(p1xcoord) - 1, int(p1xcoord) - 1, "B")
+        map_tools.swapchar(int(p1xcoord), int(p1ycoord), "B")
 
-        os.system('cls')
+        os.system('cls' if os.name == 'nt' else 'clear')
         map_tools.print_map()
 
 def setup1():
 #asks for difficulty
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
     print ("Please select a difficulty")
     print ("                        ")
     print ("----------Easy----------")
@@ -76,7 +78,7 @@ def setup1():
 
 #unused
 def setup2():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
     print ("Please select a difficulty")
     print ("                        ")
     print ("----------Easy----------")
