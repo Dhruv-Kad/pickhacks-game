@@ -87,6 +87,22 @@ def print_map():
         print(letters[row],end = '')
         print(worldMap[row])
 
+# Prompts the user for coordinates with the message parameter
+# Returns x, y coordinates
+# EX: C20 -> 20, 2
+# Does not allow water or radiation placement
+def coordinate_entry(message):
+    while True:
+        inpt = input(message)
+        regex = re.search(r"([A-Ya-y])(\d+)", inpt)
+        try:
+            x = int(regex.group(2))
+            y = ord(regex.group(1).upper()) - 65
+            if get_char(x, y) not in [key.water, key.land_nuked]:
+                return x, y
+        except:
+            continue
+
 # ------- #
 #   WAR   #
 # ------- #
@@ -205,23 +221,6 @@ def build_base(x, y, player):
     p2_bases.append(base)
     return
 
-# Prompts the user for coordinates with the message parameter
-# Returns x, y coordinates
-# EX: C20 -> 20, 2
-# Does not allow water or radiation placement
-def coordinate_entry(message):
-    while True:
-        inpt = input(message)
-        regex = re.search(r"([A-Ya-y])(\d+)", inpt)
-        try:
-            x = int(regex.group(2))
-            y = ord(regex.group(1).upper()) - 65
-            if get_char(x, y) not in [key.water, key.land_nuked]:
-                return x, y
-        except:
-            continue
-
-
 def spy_addition(numberofspies, oldprice):
     oldprice += 500
     numberofspies += 1  
@@ -238,6 +237,6 @@ def spy_work(numberofspies):
         selected = randint(1,100)
         if (selected in spy_find_nums):
             found_base = choice(p2_bases)
-            swapchar(found_base.xcoord, found_base.ycoord, "▣")
+            swapchar(found_base.xcoord, found_base.ycoord, key.p2_base)
         else:
             print("Your spies have found nothing so far.")

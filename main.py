@@ -1,6 +1,8 @@
 from map_tools import *
 import os
 import menu
+import building_info
+from random import randint
 
 f = open("log.txt", "w")
 
@@ -92,8 +94,24 @@ def print_hud():
     spy_work(p1_spies)
     print()
 
-# show menu
-menu.menu()
+# show menu and set difficulty
+difficulty = menu.menu()
+
+match difficulty:
+    case "easy":
+        difficulty = 1
+    case "medium":
+        difficulty = 2
+    case "hard":
+        difficulty = 3
+
+# place enemy bases into random positions i'm so tired
+for i in range(difficulty):
+    x, y = randint(0, 86), randint(0, 24)
+    while get_char(x, y) != key.land:
+        x, y = randint(0, 86), randint(0, 24)
+    starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
+    p2_bases.append(starting_enemy_base)
 
 while True:
     # this just clears the terminal
