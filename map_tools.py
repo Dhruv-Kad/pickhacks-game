@@ -98,20 +98,39 @@ def bomb(x, y, r):
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, key.land_nuked)
-'''
-def coup_scan(x, y, r):
-    for coords in get_coords_in_circle(x, y, r):
-        if get_char(*coords) != ".":
-'''
-def coup(x,y,level):
+
+def coup(x,y,level,player):
     radius = 0
+    challenge = False
+
     if(level == 1):
+        #50/50 chance
         radius = 3
     elif(level == 2):
+        #70% chance
         radius = 2
     else:
+        #90% chance
         radius = 1
     coup_coords = get_coords_in_circle(x,y,radius)
+    for coords in coup_coords:
+        for base in p2_bases:
+            if((base.xcoord == coords[0]) and (base.ycoord == coords[1])):
+                challenge = True
+
+    if(challenge):
+        if(level == 1):
+            ldsfjalkfdj
+        elif(level == 2):
+            al;jflkd
+        else:
+            da;jf;lkasfd
+    else:
+        build_base(x,y,player)
+
+        
+
+
     
 
 
