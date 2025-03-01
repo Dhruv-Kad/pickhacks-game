@@ -1,6 +1,7 @@
 from math import sqrt
 from time import sleep
 import animation
+import key
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -90,16 +91,16 @@ def bomb(x, y, r):
     #     swapchar(*coords, "⥀")
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
-            swapchar(*coords, "⌗")
+            swapchar(*coords, key.land_nuked)
 
-# def coup_scan(x, y, r):
-#     for coords in get_coords_in_circle(x, y, r):
-#         if get_char(*coords) != ".":
+def coup_scan(x, y, r):
+    for coords in get_coords_in_circle(x, y, r):
+        if get_char(*coords) != ".":
     
 def build_factory(x, y):
-    if get_char(x, y) != ".":
-        swapchar(x, y, "◇")
+    if get_char(x, y) != key.water:
+        swapchar(x, y, key.p1_factory)
 
 def build_base(x, y):
-    if get_char(x, y) != ".":
-        swapchar(y, x, "□")
+    if get_char(x, y) != key.water:
+        swapchar(y, x, key.p1_base)
