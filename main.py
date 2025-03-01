@@ -3,11 +3,12 @@ import os
 import menu
 
 f = open("log.txt", "w")
-# we should make factory radius 10
 
 # max value = 9
 tension = 0
 turn_counter = 0
+
+current_player = 1
 
 p1_money = 5000
 p1_income = 250
@@ -52,6 +53,7 @@ def shop():
             if p1_money >= p1_spy_price:
                 p1_money -= p1_spy_price
                 global p1_spies
+                spy_addition(p1_spies, p1_spy_price)
                 p1_spies += 1
                 f.write(f"Spy purchased\n")
         # factory case
@@ -86,7 +88,8 @@ def print_hud():
     print(f"{'TURN ' + str(turn_counter):^89}")
     print()
     print(f"${p1_money} | +${p1_income}/t")
-    print(f"{p1_spies * 1:.2f}% chance to reveal enemy base")
+    print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
+    spy_work(p1_spies)
     print()
 
 # show menu
