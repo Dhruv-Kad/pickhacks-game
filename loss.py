@@ -47,11 +47,39 @@ def youlose():
                                                                                
 
 """)
+    redawn="""
+
+░░      ░░                                    
+▒  ▒▒▒▒  ▒                                    
+▓  ▓▓▓▓  ▓                                    
+█        █                                    
+█  ████  █                                    
+░       ░░        ░       ░░                  
+▒  ▒▒▒▒  ▒  ▒▒▒▒▒▒▒  ▒▒▒▒  ▒                  
+▓       ▓▓      ▓▓▓  ▓▓▓▓  ▓                  
+█  ███  ██  ███████  ████  █                  
+█  ████  █        █       ██                  
+░       ░░░      ░░  ░░░░  ░   ░░░  ░         
+▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒  ▒  ▒    ▒▒  ▒         
+▓  ▓▓▓▓  ▓  ▓▓▓▓  ▓        ▓  ▓  ▓  ▓         
+█  ████  █        █   ██   █  ██    █         
+█       ██  ████  █  ████  █  ███   █         
+░       ░░        ░░      ░░        ░░      ░░
+▒  ▒▒▒▒  ▒▒▒▒  ▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒
+▓       ▓▓▓▓▓  ▓▓▓▓▓      ▓▓      ▓▓▓▓      ▓▓
+█  ███  █████  ██████████  █  █████████████  █
+█  ████  █        ██      ██        ██      ██
+                                              
+
+"""
     delay = 0.08
     for line in stalin.splitlines():
         print(line)
         time.sleep(delay)
     for line in cccp.splitlines():
+        print(line)
+        time.sleep(delay+0.1)
+    for line in redawn.splitlines():
         print(line)
         time.sleep(delay+0.1)
 
