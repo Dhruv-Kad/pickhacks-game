@@ -190,9 +190,15 @@ def build_base(x, y, player):
 # Prompts the user for coordinates with the message parameter
 # Returns x, y coordinates
 # EX: C20 -> 20, 2
+# Does not allow water placement
 def coordinate_entry(message):
-    inpt = input(message)
-    regex = re.search(r"([A-Ya-y])(\d+)", inpt)
-    x = int(regex.group(2))
-    y = ord(regex.group(1).upper()) - 65
-    return x, y
+    while True:
+        inpt = input(message)
+        regex = re.search(r"([A-Ya-y])(\d+)", inpt)
+        try:
+            x = int(regex.group(2))
+            y = ord(regex.group(1).upper()) - 65
+            if get_char(x, y) != key.water:
+                return x, y
+        except:
+            continue

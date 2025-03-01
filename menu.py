@@ -28,28 +28,32 @@ def p1coord_validation():
     os.system('cls' if os.name == 'nt' else 'clear')
     map_tools.print_map()
     while (True):
-        print ("Please select the coordinates for your base")
-        p1ycoord = input("Y Coordinate: ")
-        while ((p1ycoord.upper() not in char_to_num.keys()) or (not p1ycoord.isalpha()) ):
-            os.system('cls' if os.name == 'nt' else 'clear')
-            map_tools.print_map()
-            p1ycoord = input("Please select a valid Y coordinate: ")
-        
-        p1yletter_coord = char_to_num[p1ycoord.upper()]
+        x, y = map_tools.coordinate_entry("Please select the coordinates for your base: ")
+        map_tools.swapchar(x, y, "B")
+        break
+        #print ("Please select the coordinates for your base: ")
 
-        p1xcoord = input("X Coordinate: ")
-        while ((not p1xcoord.isnumeric()) or (int(p1xcoord) < 0) or (int(p1xcoord) > 86)):
-            os.system('cls' if os.name == 'nt' else 'clear')
-            map_tools.print_map()
-            p1xcoord = (input("Please select a valid X coordinate: "))
-        if (map_tools.get_char(int(p1xcoord), int(p1yletter_coord)) != key.land):
-            os.system('cls' if os.name == 'nt' else 'clear')
-            map_tools.print_map()
-            print ("Not a vlid placement coordinate.")
-            print ("please try again.")
-        else:
-            map_tools.swapchar(int(p1xcoord), int(p1yletter_coord), "B")
-            break
+        #p1ycoord = input("Y Coordinate: ")
+        #while ((p1ycoord.upper() not in char_to_num.keys()) or (not p1ycoord.isalpha()) ):
+        #    os.system('cls' if os.name == 'nt' else 'clear')
+        #    map_tools.print_map()
+        #    p1ycoord = input("Please select a valid Y coordinate: ")
+        
+        #p1yletter_coord = char_to_num[p1ycoord.upper()]
+
+        #p1xcoord = input("X Coordinate: ")
+        #while ((not p1xcoord.isnumeric()) or (int(p1xcoord) < 0) or (int(p1xcoord) > 86)):
+        #    os.system('cls' if os.name == 'nt' else 'clear')
+        #    map_tools.print_map()
+        #    p1xcoord = (input("Please select a valid X coordinate: "))
+        #if (map_tools.get_char(int(p1xcoord), int(p1yletter_coord)) != key.land):
+        #    os.system('cls' if os.name == 'nt' else 'clear')
+        #    map_tools.print_map()
+        #    print ("Not a vlid placement coordinate.")
+        #    print ("please try again.")
+        #else:
+        #    map_tools.swapchar(int(p1xcoord), int(p1yletter_coord), "B")
+        #    break
         
         # os.system('cls' if os.name == 'nt' else 'clear')
         # map_tools.print_map()
