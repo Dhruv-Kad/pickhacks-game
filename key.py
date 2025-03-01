@@ -1,0 +1,7 @@
+water = "."
+land = "#"
+land_nuked = "⌗"
+p1_factory = "◇"
+p2_factory = "◈"
+p1_base = "□"
+p2_base = "▣"

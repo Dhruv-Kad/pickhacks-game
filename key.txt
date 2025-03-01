@@ -1,7 +1,0 @@
-. | Water
-# | Land
-⌗ | Irradiated land
-◇| Friendly factory
-◈ | Enemy factory
-□ | Friendly base
-▣ | Enemy base
