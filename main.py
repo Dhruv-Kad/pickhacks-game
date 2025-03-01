@@ -1,11 +1,13 @@
-coords = ["bobby", "sam"]
+from map_tools import *
 
+p1_money = 750
+p1_income = 250
 
-tester = 1
+while True:
+    p1_money += p1_income
+    print_map()
+    print(f"${p1_money} | +${p1_income}/t")
+    x = int(input("enter nuke x: "))
+    y = int(input("enter nuke y: "))
+    bomb(x, y, 3)
 
-i = 0
-
-for i in coords:
-    for n in list(i):
-        print(n, end="")
-    print("")
