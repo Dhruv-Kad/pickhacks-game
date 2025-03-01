@@ -1,8 +1,12 @@
 import map_tools
+import os
+
+char_to_num = {'A': '0', 'B': '1', 'C': '2', 'D': '3', 'E': '4', 'F': '5', 'G': '6', 'H': '7', 'I': '8', 'J': '9', 'K': '10', 'L': '11', 'M': '12', 'N': '13', 'O': '14', 'P': '15', 'Q': '16', 'R': '17', 'S': '18', 'T': '19', 'U': '20', 'V': '21', 'W': '22', 'X': '23', 'Y': '24'}
 
 difficulties = ["EASY", "MEDIUM", "HARD"]
 
 def menu():
+    os.system('cls')
     print(f"{'|':-^59}")
     print(f"{'   /\\':<29} {'/\\   ':>29}")
     print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
@@ -17,47 +21,74 @@ def menu():
     elif (choice == "2"):
         setup2()
 
+#ASks for coordinate for stater base
+def p1coord_validation():
+    base_place_pass = 0 
+    os.system('cls')
+    map_tools.print_map()
+    while (base_place_pass == 0):
+        print ("Please select the coordinates for your character")
+        p1ycoord = input("Y Coordinate: ")
+        while ((p1ycoord.upper() not in char_to_num.keys()) or (not p1ycoord.isalpha()) ):
+            os.system('cls')
+            map_tools.print_map()
+            p1ycoord = input("Please select a valid Y coordinate: ")
+        
+        p1letter_coord = char_to_num[p1ycoord.upper()]
+
+        p1xcoord = input("X Coordinate: ")
+        while ((not p1xcoord.isnumeric()) or (int(p1xcoord) < 0) or (int(p1xcoord) > 86)):
+            os.system('cls')
+            map_tools.print_map()
+            p1xcoord = (input("Please select a valid X coordinate: "))
+        if (map_tools.get_char(int(p1xcoord), int(p1xcoord)) != "█"):
+            os.system('cls')
+            map_tools.print_map()
+            print ("Not a vlid placement coordinate.")
+            print ("please try again.")
+        else:
+            base_place_pass += 1
+        
+        map_tools.swapchar(int(p1xcoord) - 1, int(p1xcoord) - 1, "B")
+
+        os.system('cls')
+        map_tools.print_map()
 
 def setup1():
-    print()
+#asks for difficulty
+    os.system('cls')
     print ("Please select a difficulty")
-    print ("------------------------")
+    print ("                        ")
     print ("----------Easy----------")
     print ("---------Medium---------")
     print ("----------Hard----------")
     print()
 
-    base_place_pass = 0
-
     difficulty = input("Difficulty: ")
     while (difficulty.upper() not in difficulties):
-        difficulty = int(input("Please select a valid difficulty: "))
-    print()
-    while (base_place_pass == 0):
-        print ("Please select the coordinates for your character")
-        p1xcoord = int(input("X Coordinate: "))
-        while (p1xcoord < 1 or p1xcoord > 24):
-            p1xcoord = int(input("Please select a valid coordinate: "))
-        p1ycoord = int(input("Y Coordinate: "))
-        while (p1ycoord < 1 or p1xcoord > 87):
-            p1ycoord = int(input("Please select a valid coordinate: "))
-        if (map_tools.get_char(p1xcoord, p1ycoord) != "█"):
-            print ("Not a vlid placement coordinate.")
-            print ("please try again.")
-        else:
-            base_place_pass += 1
+        difficulty = input("Please select a valid difficulty: ")
+
+    p1coord_validation()
+
+    
             
     
 
 #unused
 def setup2():
-    print ("Please select the coordinates for your character")
-    p1xcoord = int(input("X Coordinate: "))
-    while (p1xcoord < 1 or p1xcoord > 24):
-        p1xcoord = int(input("Please select a valid coordinate: "))
-    p1ycoord = int(input("Y Coordinate: "))
-    while (p1ycoord < 1 or p1xcoord > 87):
-        p1ycoord = int(input("Please select a valid coordinate: "))
+    os.system('cls')
+    print ("Please select a difficulty")
+    print ("                        ")
+    print ("----------Easy----------")
+    print ("---------Medium---------")
+    print ("----------Hard----------")
+    print()
+
+    difficulty = input("Difficulty: ")
+    while (difficulty.upper() not in difficulties):
+        difficulty = input("Please select a valid difficulty: ")
+
+    p1coord_validation()
 
     print()
     print ("Please select the coordinates for your character")
