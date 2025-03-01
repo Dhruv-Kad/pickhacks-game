@@ -179,6 +179,7 @@ def coup(x,y,level,player):
                     baseIndex = i
                 
             p2_bases.pop(baseIndex)
+            swapchar(savedX,savedY,'#')
             return False
         else:
             swapchar(savedX,savedY,'▣')
