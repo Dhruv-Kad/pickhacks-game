@@ -63,6 +63,7 @@ def print_hud():
 
 
 # show menu
+coordinate_entry("enter in format A1: ")
 menu.menu()
 
 
