@@ -170,7 +170,7 @@ def build_factory(x, y, player):
         return
     
     swapchar(x, y, key.p2_factory)
-    f"f{x}-{y}" = building(x, y, "factory", True, 2)
+    factory = building(x, y, "factory", True, 2)
     p2_factories.append(factory)
     return
 
@@ -179,12 +179,12 @@ def build_base(x, y, player):
     if(player == 1):
         swapchar(x, y, key.p1_base)
         base = building(x, y, "base", True, 1)
-        p1_bases.append(factory)
+        p1_bases.append(base)
         return
     
     swapchar(x, y, key.p2_base)
-    f"b{x}-{y}" = building(x, y, "base", False, 2)
-    p2_bases.append(factory)
+    base = building(x, y, "base", False, 2)
+    p2_bases.append(base)
     return
 
 # Prompts the user for coordinates with the message parameter
