@@ -11,8 +11,9 @@ import map_tools
 #   that passes through the desired point.
 def parabola(ex, ey, x_offset, y_offset):
     p1 = (ex, ey)
-    p2 = (ex + x_offset, ey + y_offset)
-    p3 = (ex + (x_offset * 2), ey)
+    p2 = (round(ex / 2), ey + y_offset)
+    # p3 = (ex + (x_offset * 2), ey)
+    p3 = (0, 24)
 
     amatrix = [
         [(p1[0] ** 2), p1[0], 1, p1[1]],

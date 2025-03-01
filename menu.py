@@ -29,7 +29,7 @@ def p1coord_validation():
     map_tools.print_map()
     while (True):
         x, y = map_tools.coordinate_entry("Please select the coordinates for your first base: ")
-        map_tools.swapchar(x, y, "B")
+        map_tools.swapchar(x, y, key.p1_base)
         break
         #print ("Please select the coordinates for your base: ")
 

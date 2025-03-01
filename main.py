@@ -3,11 +3,12 @@ import os
 import menu
 
 f = open("log.txt", "w")
-# we should make factory radius 10
 
 # max value = 9
 tension = 0
 turn_counter = 0
+
+current_player = 1
 
 p1_money = 5000
 p1_income = 250
