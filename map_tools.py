@@ -6,6 +6,7 @@ from building_info import building
 import re
 from random import randint
 import os
+
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -51,6 +52,8 @@ worldMap = [
 def get_char(x, y):
     return worldMap[y][x]
 
+def modify_tension(tension, amount):
+    return tension + amount
 # Swaps a character on the map given (x, y) coordinates and the character to replace with
 # Returns the old character, probably useful for animation
 def swapchar(xcoord,ycoord,char):
@@ -156,22 +159,24 @@ def coup(x,y,level,player):
                     baseIndex = i
                 
             p2_bases.pop(baseIndex)
+            return False
         else:
             swapchar(savedX,savedY,'▣')
-
-
+            return True
     else:
         build_base(x,y,player)
-
-        
-
-
-    
-
+        return False
 
 # places factory character on the map and adds a new factory to the correct list of buildings    
 def build_factory(x, y, player):
+    base_connection = get_coords_in_circle(x,y,10)
+    valid_placement = False
     if(player == 1):
+        for coords in base_connection:
+            for base in p1_bases:
+                if((coords[0] == base.xcoord) and (coords[1] == base.ycoord)):
+                    valid_placement = True
+    
         swapchar(x, y, key.p1_factory)
         factory = building(x, y, "factory", True, 1)
         p1_factories.append(factory)
