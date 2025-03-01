@@ -13,7 +13,7 @@ class building:
         self.visibility = visibility
         self.ownership = ownership
         
-    def putOnMap(self,worldMap = map_tools.worldMap):
+    def putOnMap(self,worldMap):
         if(self.buildingType == "factory"):
             if(self.ownership == 1):
                 map_tools.swapchar(self.xcoord,self.ycoord, key.p1_factory)
