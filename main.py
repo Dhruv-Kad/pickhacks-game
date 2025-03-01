@@ -52,6 +52,7 @@ def shop():
             if p1_money >= p1_spy_price:
                 p1_money -= p1_spy_price
                 global p1_spies
+                spy_addition(p1_spies, p1_spy_price)
                 p1_spies += 1
                 f.write(f"Spy purchased\n")
         # factory case
@@ -87,6 +88,7 @@ def print_hud():
     print()
     print(f"${p1_money} | +${p1_income}/t")
     print(f"{p1_spies * 1:.2f}% chance to reveal enemy base")
+    spy_work(p1_spies)
     print()
 
 # show menu

@@ -7,7 +7,7 @@ import re
 from random import randint
 from random import choice
 import os
-import main
+
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
@@ -214,15 +214,17 @@ def coordinate_entry(message):
         except:
             continue
 
-def spy_addition():
-    main.p1_spy_price += 500
-    main.p1_spies += 1
-   
-def spy_work():
+
+def spy_addition(numberofspies, oldprice):
+    oldprice += 500
+    numberofspies += 1  
+
+def spy_work(numberofspies):
+    
     spy_find_nums = []
-    if (main.p1_spies > 0):
+    if (numberofspies > 0):
         i = 1
-        while (i <= main.p1_spies):
+        while (i <= numberofspies):
             spy_find_nums.append(i)
             i += 1
         selected = randint(1,100)
