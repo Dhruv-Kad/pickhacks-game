@@ -111,8 +111,8 @@ def coup(x,y,level):
         radius = 2
     else:
         radius = 1
-
     coup_coords = get_coords_in_circle(x,y,radius)
+    
 
 
 # places factory character on the map and adds a new factory to the correct list of buildings    
