@@ -1,4 +1,4 @@
-
+import worldMap
 
 def menu():
     print ("-----------------------------|-----------------------------")
@@ -21,19 +21,32 @@ def setup1():
     print()
     print ("Please select a difficulty")
     print ("------------------------")
+    print ("----------Easy----------")
+    print ("---------Medium---------")
+    print ("----------Hard----------")
     print ("Please select the coordinates for your character")
-    p1xcoord = input("X Coordinate: ")
-    p1ycoord = input("Y Coordinate(A-Y): ")
+    p1xcoord = int(input("X Coordinate: "))
+    while (p1xcoord < 1 or p1xcoord > 24):
+        p1xcoord = int(input("Please select a valid coordinate: "))
+    p1ycoord = int(input("Y Coordinate: "))
+    while (p1ycoord < 1 or p1xcoord > 87):
+        p1ycoord = int(input("Please select a valid coordinate: "))
 
 def setup2():
-    print()
-    print ("Please select the coordinates for your character Player 1")
-    p1xcoord = input("X Coordinate: ")
-    p1ycoord = input("Y Coordinate(A-Y): ")
+    print ("Please select the coordinates for your character")
+    p1xcoord = int(input("X Coordinate: "))
+    while (p1xcoord < 1 or p1xcoord > 24):
+        p1xcoord = int(input("Please select a valid coordinate: "))
+    p1ycoord = int(input("Y Coordinate: "))
+    while (p1ycoord < 1 or p1xcoord > 87):
+        p1ycoord = int(input("Please select a valid coordinate: "))
 
     print()
-    print ("Please select the coordinates for your character Player 2")
-    p2xcoord = input("X Coordinate: ")
-    p2ycoord = input("Y Coordinate(A-Y): ")
-
+    print ("Please select the coordinates for your character")
+    p2xcoord = int(input("X Coordinate: "))
+    while (p2xcoord < 1 or p2xcoord > 24):
+        p2xcoord = int(input("Please select a valid coordinate: "))
+    p2ycoord = int(input("Y Coordinate: "))
+    while (p2ycoord < 1 or p2xcoord > 87):
+        p2ycoord = int(input("Please select a valid coordinate: "))
 menu()

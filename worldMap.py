@@ -37,5 +37,5 @@ def swapchar(xcoord,ycoord,char):
 
 swapchar(1,1,'&')
 
-for i in worldMap:
-    print(i)
+#for i in worldMap:
+#    print(i)
