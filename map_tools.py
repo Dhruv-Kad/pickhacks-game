@@ -174,6 +174,7 @@ def build_factory(x, y, player):
     p2_factories.append(factory)
     return
 
+# Constructs a base for the given player at given x, y coordinates
 def build_base(x, y, player):
     if(player == 1):
         swapchar(x, y, key.p1_base)
@@ -186,12 +187,12 @@ def build_base(x, y, player):
     p2_bases.append(factory)
     return
 
+# Prompts the user for coordinates with the message parameter
+# Returns x, y coordinates
+# EX: C20 -> 20, 2
 def coordinate_entry(message):
     inpt = input(message)
-    regex = re.search(r"([A-Y])(\d+)", inpt)
-    x = regex.group(2)
-    y = char_to_num(regex.group(1))
-    return (x, y)
-
-def char_to_num(char):
-    return ord(char) - 65
+    regex = re.search(r"([A-Ya-y])(\d+)", inpt)
+    x = int(regex.group(2))
+    y = ord(regex.group(1).upper()) - 65
+    return x, y
