@@ -25,7 +25,8 @@ p1_factory_coords = []
 p1_base_coords = []
 p2_factory_coords = []
 p2_base_coords = []
-
+def returnmoney():
+    return p1_money
 def shop():
     print(f"---SHOP---")
     print(f"1. nuke    | ${nuke_price}")
