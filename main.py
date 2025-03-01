@@ -104,11 +104,11 @@ while True:
     if current_player == 1:
         p1_money += p1_income
         turn_counter += 1
-        f.write(f"Turn {turn_counter} - Player {player} - ")
+        f.write(f"Turn {turn_counter} - Player {current_player} - ")
         print_hud()
         shop()
 
     if current_player == 2:
-        
+
 
 f.close()
