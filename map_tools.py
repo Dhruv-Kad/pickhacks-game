@@ -2,16 +2,10 @@ from math import sqrt
 from time import sleep
 import animation
 import key
-from building_info import building
 # These need to be one less the actual dimensions because reasons
 # 6x6 grid = 5 and 5. stupid dumb.
 board_width = 86
 board_height = 24
-
-p1_bases = []
-p2_bases = []
-p1_factories = []
-p2_factories = []
 
 worldMap = [
 '................................#.#....................................................',
@@ -119,23 +113,7 @@ def coup(x,y,level):
 def build_factory(x, y, player):
     if(player == 1):
         swapchar(x, y, key.p1_factory)
-        factory = building(x, y, "factory", True, 1)
-        p1_factories.append(factory)
-        return
-    
-    swapchar(x, y, key.p2_factory)
-    factory = building(x, y, "factory", True, 2)
-    p2_factories.append(factory)
-    return
 
-def build_base(x, y, player):
-    if(player == 1):
-        swapchar(x, y, key.p1_base)
-        base = building(x, y, "base", True, 1)
-        p1_bases.append(factory)
-        return
-    
-    swapchar(x, y, key.p2_base)
-    factory = building(x, y, "base", False, 2)
-    p2_bases.append(factory)
-    return
+def build_base(x, y):
+    if get_char(x, y) != key.water:
+        swapchar(y, x, key.p1_base)
