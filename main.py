@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 
 
@@ -12,3 +13,6 @@ for i in coords:
     for n in list(i):
         print(n, end="")
     print("")
+=======
+print ("Hello World!")
+>>>>>>> Stashed changes
