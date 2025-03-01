@@ -108,7 +108,7 @@ while True:
         print_hud()
         shop()
 
-    if current_player == 2:
+    # if current_player == 2:
 
 
 f.close()
