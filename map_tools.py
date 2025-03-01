@@ -93,9 +93,9 @@ def bomb(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, key.land_nuked)
 
-def coup_scan(x, y, r):
-    for coords in get_coords_in_circle(x, y, r):
-        if get_char(*coords) != ".":
+# def coup_scan(x, y, r):
+#     for coords in get_coords_in_circle(x, y, r):
+#         if get_char(*coords) != ".":
     
 def build_factory(x, y):
     if get_char(x, y) != key.water:
