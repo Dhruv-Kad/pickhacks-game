@@ -1,6 +1,3 @@
-
-
-
 coords = ["bobby", "sam"]
 
 
