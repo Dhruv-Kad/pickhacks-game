@@ -8,7 +8,7 @@ f = open("log.txt", "w")
 tension = 0
 turn_counter = 0
 
-current_player = 1
+current_player = 2
 
 p1_money = 5000
 p1_income = 250
@@ -98,13 +98,17 @@ menu.menu()
 while True:
     # this just clears the terminal
     os.system('cls' if os.name == 'nt' else 'clear')
-    
-    p1_money += p1_income
-    turn_counter += 1
-    f.write(f"Turn {turn_counter} - Player 1 - ")
 
-    print_hud()
-    
-    shop()
+    current_player = (current_player % 2) + 1
+
+    if current_player == 1:
+        p1_money += p1_income
+        turn_counter += 1
+        f.write(f"Turn {turn_counter} - Player {player} - ")
+        print_hud()
+        shop()
+
+    if current_player == 2:
+        
 
 f.close()
