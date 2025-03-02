@@ -1,4 +1,5 @@
 import map_tools
+import briefing
 import os
 import key
 import re
@@ -70,13 +71,12 @@ def setup2():
     print ("Please select a difficulty")
     print ()
     print ("-----------War-----------")
-    print ("-----------is----------")
-    print ("-----------Hell-----------")
+    print ("-----------is------------")
+    print ("-----------Hell----------")
     print()
 
     difficulty = input("Difficulty: ")
-    
-
+    briefing.brief()
     p1coord_validation()
 
     return "easy"
