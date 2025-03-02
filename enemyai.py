@@ -6,7 +6,6 @@ def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_pr
     spy_weight = 1 + abs(((1 * difficulty) * (playerbunkers * 0.4) * (abs(tension - 9) + 1) * (money / 3)))
     factory_weight = 1 + abs(((1 * difficulty) * (1.1) * (abs(tension - 10) + 1) * (money / 2)))
     
-    print(f"nuke_weight {nuke_weight} spy_weight {spy_weight} factory_weight {factory_weight}")
     
     prices = [nuke_price, spy_price, factory_price]
     possible_actions = [1, 2, 3]
@@ -65,6 +64,6 @@ def aibomb():
 
 if __name__ == "__main__":
     w = 15
-    while w > 15:
-        weighttester()
+    while w > 0:
+        print(weighttester())
         w -= 1
