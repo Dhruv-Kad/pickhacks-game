@@ -15,14 +15,14 @@ turn_counter = 0
 
 current_player = 2
 
-p1_money = 5000
+p1_money = 750
 p1_income = 250
 p1_spies = 0
-p2_money = 5000
+p2_money = 750
 p2_income = 250
 p2_spies = 0
 
-nuke_price = 5000
+nuke_price = 3000
 p1_spy_price = 1000
 p1_factory_price = 1000
 p2_spy_price = 1000
