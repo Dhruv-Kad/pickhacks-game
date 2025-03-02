@@ -1,4 +1,5 @@
 import random
+import map_tools
 
 def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_price, factory_price, nuke_price):
     nuke_weight = 1 + ((1 * difficulty * 1) * (playerbunkers * 0.6) * (playerfactories * 0.1) * tension * 1.5) * (money / 3)
@@ -38,7 +39,26 @@ def weighttester():
     
     storagedict = {converted_actions[output - 1]: inputlist}  # Storing result with the selected action name
     return storagedict
+def confirmarea():
+    water = "."
+    land_nuked = "⌗"
+    p2_factory = "◈"
+    p2_base = "▣"
+    invalids = [water,land_nuked,p2_factory,p2_base]
+    runs = 0
+    randx = random.randint(0,85)
+    randy = random.randint(0,23)
+    underchar = map_tools.get_char(randx,randy)
+    while (underchar in invalids):    
+        randx = random.randint(0,85)
+        randy = random.randint(0,23)
+        underchar = map_tools.get_char(randx,randy)
+        runs += 1
+    return randx,randy 
+
+def aibomb():
+    x, y = confirmarea()
+    map_tools.bomb(x,y,2)
 
 if __name__ == "__main__":
-    print(weighttester())
-
+    pass
