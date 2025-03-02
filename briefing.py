@@ -35,19 +35,19 @@ G
     para4= """To place a factory, start a coup, or launch a nuke at the point G42, first select the action you want to take. 
 Then, type in the cordinates based on the alphabet in the same format as above (Letter Y)(Numerical X).
 
-1.Placing a factory increases the amount of money you recive per round by $250 dollars per factory built
+1.Placing a factory increases the amount of money you recive per round by $250 dollars per factory built.
     You can only place a factory within a ten unit radius of a base. The same rule applies to the Munion.
-    (I would suggest using the position of their factories to get a rough idea of their base location
+    (I would suggest using the position of their factories to get a rough idea of their base location)
 
-2.Starting a coup means you fund our 'overseas interest groups' to have them build up a base with nuclear capablities
-    Be warned, if the enemy has a base nearby, our proxy groups will be drawn into a conflict, which we may or may not win
-    You can spend more money on funding our 'friends overseas' in order to reduce the radius to where the enemy can interfere
+2.Starting a coup means you fund our 'overseas interest groups' to have them build up a base with nuclear capablities.
+    Be warned, if the enemy has a base nearby, our proxy groups will be drawn into a conflict, which we may or may not win.
+    You can spend more money funding our 'friends overseas' to increase your chance of successfully seizing the land.
 
 3. If you don't know what launching a nuke does, I seriously question your ability to lead us.
 
 4.We simulate our real-world spy network through giving you the ability to hire spies to reveal Munion bases.
-    These spies become more effective the more money you invest into them
-    Be warned, the Munion is not without it's own skilled Spies, and they are hungry for the blood of the free world
+    These spies become more effective the more money you invest into them.
+    Be warned, the Munion is not without it's own skilled Spies, and they are hungry for the blood of the free world.
 
 5. You also have the ability to pass your turn, should you so need
 """
@@ -66,6 +66,7 @@ heaven. Long live liberty, and let the simulated sun rise on a new free virtual 
             print(line)
             time.sleep(0.02)
         input("Press enter to continue:")
+        print()
         track += 1
 
 if __name__ == "__main__":

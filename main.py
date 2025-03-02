@@ -36,11 +36,21 @@ p2_base_coords = []
 
 ai_choice = 0
 
+def map_key():
+    print(f"-MAP--KEY-")
+    print ("water | .")
+    print ("land | #")
+    print ("land_nuked | ⌗")
+    print ("p1_factory | f")
+    print ("p2_factory | F")
+    print ("p1_base | b")
+    print ("p2_base | B")
+
 def returnmoney():
     return p1_money
 def shop():
     print(f"---SHOP---")
-    print(f"1. nuke    | ${nuke_price}")
+    print(f"1. nuke    | ${nuke_price} [Destroys all land in a 2 unit radius form a selected point]")
     print(f"2. spy     | ${p1_spy_price} [Increases percent chance to reveal an enemy base each round by 2%]")
     print(f"3. factory | ${p1_factory_price} [Increase money earned every round $250] (You can only build a factory ten units away from a base)")
     print(f"4. coup    | ${coup_base_price} / {round(coup_base_price * 1.5)} / {coup_base_price * 2} [Takes over a square, risking conflict if there is an enemy base within a radius. More expensive coups lower this radius")
@@ -79,6 +89,7 @@ def shop():
                 x, y = coordinate_entry("Enter factory coordinates: ")
                 validity = build_factory(x, y, 1)
                 while(validity != True):
+                    print('Invalid factory placement.')
                     x, y = coordinate_entry("Enter factory coordinates: ")
                     validity = build_factory(x, y, 1)
                 global p1_income
@@ -139,15 +150,16 @@ def print_hud(ai_choice):
         print("Your spies have found nothing so far.")
     else:
         print()
-    print()
+    
 
 
     if (spy_casualties == 1):
         print("One of your spies has been captured!")
     else:
         print()
+    map_key()
     print()
-   
+    print()
 # show menu and set difficulty
 difficulty = menu.menu()
 
