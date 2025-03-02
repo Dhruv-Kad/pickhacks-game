@@ -174,6 +174,7 @@ while True:
                     p2_money -= priceofsel
                     bomb(x, y, 2)
                     f.write(f"Nuke -> {x}, {y}\n")
+                    ai_choice = 1
                 else:
                     build_base(x, y, 2)
                     f.write(f"Coup -> {x}, {y}\n")
