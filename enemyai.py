@@ -61,18 +61,9 @@ def aibomb():
     #Add in a better check for if bomb is in safe radius
     map_tools.bomb(x,y,2)
 
-def aifactory(map_tools.p1_base,map_tools.p2_base):
-    
-    x,y = confirmarea()
-    badlist = []
-    for i in map_tools.p1_base:
-        badlist.append(i.get_coords())
-    while :
-        pass
-    map_tools.build_base(x,y,2)
 
 
 if __name__ == "__main__":
     map_tools.print_map()
-    aifactory([])
+    aibomb()
     map_tools.print_map()
