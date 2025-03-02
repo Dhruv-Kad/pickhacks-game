@@ -73,8 +73,10 @@ def shop():
             if p1_money >= p1_factory_price:
                 p1_money -= p1_factory_price
                 x, y = coordinate_entry("Enter factory coordinates: ")
-                # hardcoded to p1 right now
-                build_factory(x, y, 1)
+                validity = build_factory(x, y, 1)
+                while(validity != True):
+                    x, y = coordinate_entry("Enter factory coordinates: ")
+                    validity = build_factory(x, y, 1)
                 global p1_income
                 p1_income += 250
                 f.write(f"Factory -> {x}, {y}\n")
@@ -100,6 +102,7 @@ def print_hud():
     print_map()
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
+    
     print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
