@@ -16,10 +16,10 @@ turn_counter = 0
 current_player = 2
 
 p1_money = 750
-p1_income = 250
+p1_income = 500
 p1_spies = 0
 p2_money = 750
-p2_income = 250
+p2_income = 500
 p2_spies = 0
 
 nuke_price = 3000
@@ -76,7 +76,7 @@ def shop():
                 # hardcoded to p1 right now
                 build_factory(x, y, 1)
                 global p1_income
-                p1_income += 150
+                p1_income += 250
                 f.write(f"Factory -> {x}, {y}\n")
         # coup case
         case 4:
@@ -101,7 +101,7 @@ def print_hud():
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
     print()
-    print(f"${p1_money} | +${p1_income}/t")
+    print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
     if (spy_detection == 1):
         print("Your spies have found a base!")
