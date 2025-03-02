@@ -15,7 +15,7 @@ turn_counter = 0
 
 current_player = 2
 
-p1_money = 500
+p1_money = 5000
 p1_income = 500
 p1_spies = 0
 p2_money = 750
