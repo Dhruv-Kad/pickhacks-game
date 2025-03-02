@@ -137,6 +137,14 @@ def bomb(x, y, r):
             base_coordinates = p2_bases[i].get_coords()
             if coords == tuple(base_coordinates):
                 p2_bases.pop(i)
+        for i in range(len(p1_factories)):
+            factory_coordinates = p1_factories[i].get_coords()
+            if coords == tuple(factory_coordinates):
+                p1_factories.pop(i)   
+        for i in range(len(p2_factories)):
+            factory_coordinates = p2_factories[i].get_coords()
+            if coords == tuple(factory_coordinates):
+                p2_factories.pop(i)
 
 def coup(x,y,level,player):
     radius = 0
