@@ -86,15 +86,19 @@ def shop():
 # Prints the hud
 # Contains (top to bottom) world map, tension meter, income, spy effectiveness
 def print_hud():
+
+    spy_detection = spy_work(p1_spies)
     print_map()
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
     print()
     print(f"${p1_money} | +${p1_income}/t")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
-    spy_work(p1_spies)
+    if (spy_detection == 1):
+        print("Your spies have found a base!")
+    elif (spy_detection == 0):
+        print("Your spies have found nothing so far.")
     print()
-
 # show menu and set difficulty
 difficulty = menu.menu()
 

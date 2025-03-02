@@ -239,5 +239,9 @@ def spy_work(numberofspies):
         if (selected in spy_find_nums):
             found_base = choice(p2_bases)
             swapchar(found_base.xcoord, found_base.ycoord, key.p2_base)
+            
+            return 1
         else:
-            print("Your spies have found nothing so far.")
+            return 0
+            
+

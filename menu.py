@@ -51,27 +51,27 @@ def setup1():
     return difficulty.lower()
 
 #unused
-# def setup2():
-#     os.system('cls' if os.name == 'nt' else 'clear')
-#     print ("Please select a difficulty")
-#     print ()
-#     print ("-----------Easy-----------")
-#     print ("----------Medium----------")
-#     print ("-----------Hard-----------")
-#     print()
+def setup2():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print ("Please select a difficulty")
+    print ()
+    print ("-----------Easy-----------")
+    print ("----------Medium----------")
+    print ("-----------Hard-----------")
+    print()
 
-#     difficulty = input("Difficulty: ")
-#     while (difficulty.upper() not in difficulties):
-#         difficulty = input("Please select a valid difficulty: ")
+    difficulty = input("Difficulty: ")
+    while (difficulty.upper() not in difficulties):
+        difficulty = input("Please select a valid difficulty: ")
 
-#     p1coord_validation()
+    p1coord_validation()
 
-#     print()
-#     print ("Please select the coordinates for your character")
-#     p2xcoord = int(input("X Coordinate: "))
-#     while (p2xcoord < 1 or p2xcoord > 24):
-#         p2xcoord = int(input("Please select a valid coordinate: "))
-#     p2ycoord = int(input("Y Coordinate: "))
-#     while (p2ycoord < 1 or p2xcoord > 87):
-#         p2ycoord = int(input("Please select a valid coordinate: "))
-# # menu()
+    print()
+    print ("Please select the coordinates for your character")
+    p2xcoord = int(input("X Coordinate: "))
+    while (p2xcoord < 1 or p2xcoord > 24):
+        p2xcoord = int(input("Please select a valid coordinate: "))
+    p2ycoord = int(input("Y Coordinate: "))
+    while (p2ycoord < 1 or p2xcoord > 87):
+        p2ycoord = int(input("Please select a valid coordinate: "))
+menu()
