@@ -1,7 +1,7 @@
 # Premise 
 In this game, the world is on the brink of chaos, and the power to shape the future rests in your hands.  
 Your mission is simple: stop the spread of the Bloviet Munion's influence at any cost.
-## Starting the briefing off the main menu is highly recommended 
+**Starting the briefing off the main menu is highly recommended**
 # Controls  
 In this game, you will use a tactical map to decide your next move. Simply select an action and input coordinates to carry out your commands.
 
