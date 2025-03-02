@@ -86,7 +86,10 @@ def shop():
                 f.write(f"Factory -> {x}, {y}\n")
         # coup case
         case 4:
-            coup_level = int(input("Enter coup level (1-3): "))
+            coup_level = input("Enter coup level (1-3): ")
+            while coup_level not in ["1", "2", "3"]:
+                coup_level = input("Enter coup level (1-3): ")
+            coup_level = int(coup_level)
             if p1_money >= (coup_base_price * (0.5 * coup_level + 0.5)):
                 p1_money -= (coup_base_price * (0.5 * coup_level + 0.5))
                 x, y = coordinate_entry("Enter coup coordinates: ")
@@ -165,7 +168,7 @@ while get_char(x, y) != key.land:
     x, y = randint(0, 86), randint(0, 24)
 starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
 # uncomment for seeing intial enemy base
-#swapchar(x, y, "A") # comment this out later
+# swapchar(x, y, "A") # comment this out later
 p2_bases.append(starting_enemy_base)
 
 while True:
@@ -195,6 +198,7 @@ while True:
                     ai_choice = 1
                 else:
                     build_base(x, y, 2)
+                    # swapchar(x, y, "A")
                     f.write(f"Coup -> {x}, {y}\n")
                     ai_choice = 4
             case 2:
@@ -225,10 +229,12 @@ while True:
                 p2_income = 500 + 250 * len(p2_factories)
 
     if p1_bases == []:
+        animation.flash_ending()
         loss.youlose()
         f.write("Player 2 Wins")
         break
     if p2_bases == []:
+        animation.flash_ending()
         win.youwin()
         f.write("Player 1 Wins")
         break

@@ -3,6 +3,8 @@
 
 import time
 import map_tools
+import key
+import os
 
 # start with (-3, 3)  _  offset on (8, 8)
 # this should make a / \ looking shape
@@ -46,3 +48,31 @@ def parabola(ex, ey, x_offset, y_offset):
             coord_list.append((i, round(fx)))
 
     return coord_list
+
+def flash_ending():
+    count = 0
+    original_map = map_tools.worldMap
+    blinker = "\n\n"
+    for row in original_map:
+        blinker = blinker + "  "
+        for char in row:
+            if char != key.land_nuked:
+                blinker = blinker + " "
+            else:
+                blinker = blinker + "X"
+                count += 1
+        blinker = blinker + "\n"
+    
+    show_end_toggle = False
+    
+    for i in range(101):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        show_end_toggle = not show_end_toggle
+        if show_end_toggle:
+            print(blinker)
+        else:
+            map_tools.print_map()
+        time.sleep(0.01)
+    time.sleep(2)
+    print(f"Percent of earth destroyed: {(count / 649) * 100:.2f}%")
+    time.sleep(2)
