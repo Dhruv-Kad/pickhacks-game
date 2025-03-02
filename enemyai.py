@@ -1,4 +1,5 @@
 import random
+import key
 import map_tools
 
 def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_price, factory_price, nuke_price):
@@ -39,10 +40,10 @@ def weighttester():
     storagedict = {converted_actions[output - 1]: inputlist}  # Storing result with the selected action name
     return storagedict
 def confirmarea():
-    water = "."
-    land_nuked = "⌗"
-    p2_factory = "◈"
-    p2_base = "▣"
+    water = key.water 
+    land_nuked = key.land_nuked 
+    p2_factory = key.p2_factory 
+    p2_base = key.p2_base 
     invalids = [water,land_nuked,p2_factory,p2_base]
     runs = 0
     randx = random.randint(0,85)
