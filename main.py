@@ -112,8 +112,11 @@ def print_hud(ai_choice):
     print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
-    print(ai_choice)
-    if (ai_choice == 2):
+
+    if (ai_choice == 1):
+        print ("The enemy has launched a nuke!")
+        ai_choice = 0
+    elif (ai_choice == 2):
         print ("The enemy has hired a spy!")
         ai_choice = 0
     elif (ai_choice == 3):
@@ -122,7 +125,6 @@ def print_hud(ai_choice):
     elif (ai_choice == 4):
         print ("The enemy has built a base!")
         ai_choice = 0
-    print(ai_choice)
 
     if (spy_detection == 1):
         print("Your spies have found a base!")
