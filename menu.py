@@ -41,10 +41,10 @@ def setup1():
 #asks for difficulty
     os.system('cls' if os.name == 'nt' else 'clear')
     print ("Please select a difficulty")
+    print ("-----------War-----------")
+    print ("-----------is----------")
+    print ("-----------Hell-----------")
     print ()
-    print ("-----------Easy-----------")
-    print ("----------Medium----------")
-    print ("-----------Hard-----------")
     print()
 
     difficulty = input("Difficulty: ")
@@ -69,9 +69,9 @@ def setup2():
     os.system('cls' if os.name == 'nt' else 'clear')
     print ("Please select a difficulty")
     print ()
-    print ("-----------Easy-----------")
-    print ("----------Medium----------")
-    print ("-----------Hard-----------")
+    print ("-----------War-----------")
+    print ("-----------is----------")
+    print ("-----------Hell-----------")
     print()
 
     difficulty = input("Difficulty: ")
