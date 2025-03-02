@@ -36,6 +36,16 @@ p2_base_coords = []
 
 ai_choice = 0
 
+def map_key():
+    print(f"-MAP--KEY-")
+    print ("water | .")
+    print ("land | #")
+    print ("land_nuked | ⌗")
+    print ("p1_factory | f")
+    print ("p2_factory | F")
+    print ("p1_base | b")
+    print ("p2_base | B")
+
 def returnmoney():
     return p1_money
 def shop():
@@ -136,15 +146,16 @@ def print_hud(ai_choice):
         print("Your spies have found nothing so far.")
     else:
         print()
-    print()
+    
 
 
     if (spy_casualties == 1):
         print("One of your spies has been captured!")
     else:
         print()
+    map_key()
     print()
-   
+    print()
 # show menu and set difficulty
 difficulty = menu.menu()
 
