@@ -177,18 +177,10 @@ def coup(x,y,level,player):
     if(challenge):
         success = True
         if(level == 1):
-            # if(randint(1,2) == 1):
-            #     success = False
             if randint(1, 2) == 1: success = False
         elif(level == 2):
-            # temp = randint(1,10)
-            # if(temp == 1 or temp == 2 or temp == 3):
-            #     success = False
             if randint(1, 10) in [1, 2, 3]: success = False
         else:
-            # temp = randint(1,10)
-            # if(temp == 1):
-            #     success = False
             if randint(1, 10) == 1: success = False
 
         if(success):

@@ -64,7 +64,7 @@ def shop():
                 f.write(f"Nuke -> {x}, {y}\n")
         # spy case
         case 2:
-            global tension
+            
             if p1_money >= p1_spy_price:
                 p1_money -= p1_spy_price
                 global p1_spies
