@@ -1,7 +1,8 @@
-## Introduction
+# Premise 
 In this game, the world is on the brink of chaos, and the power to shape the future rests in your hands.  
 Your mission is simple: stop the spread of the Bloviet Munion's influence at any cost.
-##  
+## Starting the briefing off the main menu is highly recommended 
+# Controls  
 In this game, you will use a tactical map to decide your next move. Simply select an action and input coordinates to carry out your commands.
 
 1. **Placing a Factory**:  
@@ -21,11 +22,12 @@ In this game, you will use a tactical map to decide your next move. Simply selec
 5. **Passing Your Turn**:  
    You also have the option to pass your turn if you find yourself low on funds.
 
-## Tension 
+# Tension 
 The Munion won't start a nuclear conflict without a valid reason. Your actions will increase the **Tension Bar** at the bottom of the screen, indicating how close the game is to reaching a nuclear showdown.  
 Every action you take (except building factories) will raise the tension by one point. If you go nuclear, be aware that the Munion will retaliate with its own nuclear strikes.
-## To win 
+# To win 
   To win, destroy all enemy bunkers.
+
 
 # Additional information
 
