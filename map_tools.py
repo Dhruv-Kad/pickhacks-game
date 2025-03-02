@@ -127,24 +127,28 @@ def bomb(x, y, r):
     
     # actual non animation bomb code
     for coords in get_coords_in_circle(x, y, r):
-        if get_char(*coords) != ".":
+        if get_char(*coords) != key.water:
             swapchar(*coords, key.land_nuked)
-        for i in range(len(p1_bases)):
-            base_coordinates = p1_bases[i].get_coords()
-            if coords == tuple(base_coordinates):
-                p1_bases.pop(i)
-        for i in range(len(p2_bases)):
-            base_coordinates = p2_bases[i].get_coords()
-            if coords == tuple(base_coordinates):
-                p2_bases.pop(i)
-        for i in range(len(p1_factories)):
-            factory_coordinates = p1_factories[i].get_coords()
-            if coords == tuple(factory_coordinates):
-                p1_factories.pop(i)   
-        for i in range(len(p2_factories)):
-            factory_coordinates = p2_factories[i].get_coords()
-            if coords == tuple(factory_coordinates):
-                p2_factories.pop(i)
+            # ?????? DO NOT DO THIS  !!
+        try:
+            for i in range(len(p1_bases)):
+                base_coordinates = p1_bases[i].get_coords()
+                if coords == tuple(base_coordinates):
+                    p1_bases.pop(i)
+            for i in range(len(p2_bases)):
+                base_coordinates = p2_bases[i].get_coords()
+                if coords == tuple(base_coordinates):
+                    p2_bases.pop(i)
+            for i in range(len(p1_factories)):
+                factory_coordinates = p1_factories[i].get_coords()
+                if coords == tuple(factory_coordinates):
+                    p1_factories.pop(i)   
+            for i in range(len(p2_factories)):
+                factory_coordinates = p2_factories[i].get_coords()
+                if coords == tuple(factory_coordinates):
+                    p2_factories.pop(i)
+        except:
+            pass
 
 def coup(x,y,level,player):
     radius = 0
@@ -258,7 +262,7 @@ def spy_work(numberofspies):
             spy_find_nums.append(i)
             spy_find_nums.append(i + 50)
             i += 1
-        selected = randint(1,100)
+        selected = randint(1,200)
         if ((selected in spy_find_nums) and (selected not in revealed_bases)):
             found_base = choice(p2_bases)
             revealed_bases.append(found_base)

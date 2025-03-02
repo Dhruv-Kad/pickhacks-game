@@ -64,11 +64,13 @@ def shop():
                 f.write(f"Nuke -> {x}, {y}\n")
         # spy case
         case 2:
+            global tension
             if p1_money >= p1_spy_price:
                 p1_money -= p1_spy_price
                 global p1_spies
                 spy_addition(p1_spies, p1_spy_price)
                 p1_spies += 1
+                tension += 1
                 f.write(f"Spy purchased\n")
         # factory case
         case 3:
@@ -80,7 +82,6 @@ def shop():
                     x, y = coordinate_entry("Enter factory coordinates: ")
                     validity = build_factory(x, y, 1)
                 global p1_income
-                p1_income = 500 + 250 * len(p1_factories)
                 p1_income = 500 + 250 * len(p1_factories)
                 f.write(f"Factory -> {x}, {y}\n")
         # coup case
@@ -204,6 +205,7 @@ while True:
                 ai_choice = 3
 
                 
+                p2_income = 500 + 250 * len(p2_factories)
 
     if p1_bases == []:
         loss.youlose()
