@@ -41,10 +41,10 @@ def setup1():
 #asks for difficulty
     os.system('cls' if os.name == 'nt' else 'clear')
     print ("Please select a difficulty")
+    print ("-----------War-----------")
+    print ("-----------is----------")
+    print ("-----------Hell-----------")
     print ()
-    print ("-----------Easy-----------")
-    print ("----------Medium----------")
-    print ("-----------Hard-----------")
     print()
 
     difficulty = input("Difficulty: ")
@@ -66,4 +66,18 @@ def setup2():
 
 
     char = input("press enter: ")
-    setup1()
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print ("Please select a difficulty")
+    print ()
+    print ("-----------War-----------")
+    print ("-----------is----------")
+    print ("-----------Hell-----------")
+    print()
+
+    difficulty = input("Difficulty: ")
+    while (difficulty.upper() not in difficulties):
+        difficulty = input("Please select a valid difficulty: ")
+
+    p1coord_validation()
+
+    return difficulty.lower()
