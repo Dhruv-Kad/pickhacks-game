@@ -22,11 +22,9 @@ def menu():
         print('Invalid choice\n')
         choice = input("Please select an option(type a number): ")
     if (choice == '1'):
-        setup1()
-        return        
+        return setup1()  
     elif (choice == '2'):
-        setup2()
-        return
+        return setup2()
 
 #ASks for coordinate for stater base
 def p1coord_validation():

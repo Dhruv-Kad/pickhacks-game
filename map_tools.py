@@ -213,7 +213,7 @@ def build_factory(x, y, player):
             return True
         return False
     for coords in base_connection:
-        for base in p1_bases:
+        for base in p2_bases:
             if((coords[0] == base.xcoord) and (coords[1] == base.ycoord)):
                 valid_placement = True
     if(valid_placement):
