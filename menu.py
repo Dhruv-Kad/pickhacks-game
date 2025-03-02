@@ -14,11 +14,19 @@ def menu():
     print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
     print(f"{' /    \\':<29} {'/    \\ ':>29}")
     print(f"{'|':-^59}")
-    print(f"{'1. 1 Player':^59}")
-    print(f"{'2. Exit':^59}")
+    print(f"{'1. Start':^59}")
+    print(f"{'2. Briefing':^59}")
+    print(f"{'3. Exit':^59}")
     choice = input("Please select an option(type a number): ")
-    if (choice == "1"):
-        return setup1()
+    while ((choice != '1') and (choice != '2') and (choice != '3')):
+        print('Invalid choice\n')
+        choice = input("Please select an option(type a number): ")
+    if (choice == '1'):
+        setup1()
+        return        
+    elif (choice == '2'):
+        setup2()
+        return
 
 #ASks for coordinate for stater base
 def p1coord_validation():
@@ -48,3 +56,16 @@ def setup1():
     p1coord_validation()
 
     return difficulty.lower()
+
+
+def setup2():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"{'|':-^59}")
+    print(f"{'   /\\':<29} {'/\\   ':>29}")
+    print(f"  /  \\{'Non-Proliferation':^47}/  \\   ")
+    print(f"{' /    \\':<29} {'/    \\ ':>29}")
+    print(f"{'|':-^59}")
+
+
+    char = input("press enter: ")
+    setup1()
