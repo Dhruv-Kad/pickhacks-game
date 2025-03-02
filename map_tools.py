@@ -129,26 +129,24 @@ def bomb(x, y, r):
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != key.water:
             swapchar(*coords, key.land_nuked)
-            # ?????? DO NOT DO THIS  !!
-        try:
-            for i in range(len(p1_bases)):
-                base_coordinates = p1_bases[i].get_coords()
-                if coords == tuple(base_coordinates):
-                    p1_bases.pop(i)
-            for i in range(len(p2_bases)):
-                base_coordinates = p2_bases[i].get_coords()
-                if coords == tuple(base_coordinates):
-                    p2_bases.pop(i)
-            for i in range(len(p1_factories)):
-                factory_coordinates = p1_factories[i].get_coords()
-                if coords == tuple(factory_coordinates):
-                    p1_factories.pop(i)   
-            for i in range(len(p2_factories)):
-                factory_coordinates = p2_factories[i].get_coords()
-                if coords == tuple(factory_coordinates):
-                    p2_factories.pop(i)
-        except:
-            pass
+        # ?????? DO NOT DO THIS  !!
+        for i in reversed(range(len(p1_bases))):
+            base_coordinates = p1_bases[i].get_coords()
+            if coords == tuple(base_coordinates):
+                p1_bases.pop(i)
+        for i in reversed(range(len(p2_bases))):
+            base_coordinates = p2_bases[i].get_coords()
+            if coords == tuple(base_coordinates):
+                p2_bases.pop(i)
+        for i in reversed(range(len(p1_factories))):
+            factory_coordinates = p1_factories[i].get_coords()
+            if coords == tuple(factory_coordinates):
+                p1_factories.pop(i)   
+        for i in reversed(range(len(p2_factories))):
+            factory_coordinates = p2_factories[i].get_coords()
+            if coords == tuple(factory_coordinates):
+                p2_factories.pop(i)
+
 
 def coup(x,y,level,player):
     radius = 0

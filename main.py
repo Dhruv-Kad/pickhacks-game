@@ -153,7 +153,7 @@ for i in range(difficulty):
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
     # uncomment for seeing intial enemy base
-    # swapchar(x, y, "A")
+    swapchar(x, y, "A") # comment this out later
     p2_bases.append(starting_enemy_base)
 
 while True:
