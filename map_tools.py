@@ -249,18 +249,37 @@ def spy_work(numberofspies):
     if (numberofspies > 0):
         i = 1
         while (i <= numberofspies):
-            spy_find_nums.append(i)
-            spy_find_nums.append(i + 50)
+            first = randint(1,100)
+            second = randint(1,100)
+            while ((first in spy_find_nums) and (second in spy_find_nums)):
+                first = randint(1,100)
+                second = randint(1,100)
+            spy_find_nums.append(first)
+            spy_find_nums.append(second)
             i += 1
-        selected = randint(1,200)
+        selected = randint(1,100)
         if ((selected in spy_find_nums) and (selected not in revealed_bases)):
             found_base = choice(p2_bases)
             revealed_bases.append(found_base)
             swapchar(found_base.xcoord, found_base.ycoord, key.p2_base)
-            
             return 1
         else:
             return 0
-            
-
-
+           
+def spy_loss(numberofspies, enemyspies):
+   
+    enemy_spy_hits = []
+    if ((numberofspies > 0) and (enemyspies > 0)):
+        i = 1
+        while (i <= enemyspies):
+            first = randint(1,100)
+            second = randint(1,100)
+            while ((first in enemy_spy_hits) and (second in enemy_spy_hits)):
+                first = randint(1,100)
+                second = randint(1,100)
+            enemy_spy_hits.append(first)
+            enemy_spy_hits.append(second)
+            i += 1
+        chosen = randint(1,100)
+        if (chosen in enemy_spy_hits):
+            numberofspies -= 1
