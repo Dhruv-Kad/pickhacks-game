@@ -25,3 +25,6 @@ class building:
                 map_tools.swapchar(self.xcoord,self.ycoord, key.p1_base)
             else:
                 map_tools.swapchar(self.xcoord,self.ycoord, key.p2_base)
+
+    def get_coords(self):
+        return[self.xcoord,self.ycoord]
