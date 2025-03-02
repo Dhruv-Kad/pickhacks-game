@@ -15,16 +15,22 @@ current_player = 2
 p1_money = 5000
 p1_income = 250
 p1_spies = 0
+p2_money = 5000
+p2_income = 250
+p2_spies = 0
 
 nuke_price = 5000
 p1_spy_price = 1000
 p1_factory_price = 1000
+p2_spy_price = 1000
+p2_factory_price = 1000
 coup_base_price = 1500
 
 p1_factory_coords = []
 p1_base_coords = []
 p2_factory_coords = []
 p2_base_coords = []
+
 def returnmoney():
     return p1_money
 def shop():
@@ -117,6 +123,7 @@ for i in range(difficulty):
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
     p2_bases.append(starting_enemy_base)
+    swapchar(x, y, key.p2_base)
 
 while True:
     # this just clears the terminal
@@ -131,7 +138,8 @@ while True:
         print_hud()
         shop()
 
-    # if current_player == 2:
+    if current_player == 2:
+        
 
 
 f.close()
