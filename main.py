@@ -15,7 +15,7 @@ turn_counter = 0
 
 current_player = 2
 
-p1_money = 5000
+p1_money = 500
 p1_income = 500
 p1_spies = 0
 p2_money = 750
@@ -165,7 +165,7 @@ for i in range(difficulty):
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
     # uncomment for seeing intial enemy base
-    swapchar(x, y, "A") # comment this out later
+    #swapchar(x, y, "A") # comment this out later
     p2_bases.append(starting_enemy_base)
 
 while True:
