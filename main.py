@@ -89,6 +89,7 @@ def shop():
                 x, y = coordinate_entry("Enter factory coordinates: ")
                 validity = build_factory(x, y, 1)
                 while(validity != True):
+                    print('Invalid factory placement.')
                     x, y = coordinate_entry("Enter factory coordinates: ")
                     validity = build_factory(x, y, 1)
                 global p1_income
