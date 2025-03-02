@@ -127,24 +127,26 @@ def bomb(x, y, r):
     
     # actual non animation bomb code
     for coords in get_coords_in_circle(x, y, r):
-        if get_char(*coords) != ".":
+        if get_char(*coords) != key.water:
             swapchar(*coords, key.land_nuked)
-        for i in range(len(p1_bases)):
+        # ?????? DO NOT DO THIS  !!
+        for i in reversed(range(len(p1_bases))):
             base_coordinates = p1_bases[i].get_coords()
             if coords == tuple(base_coordinates):
                 p1_bases.pop(i)
-        for i in range(len(p2_bases)):
+        for i in reversed(range(len(p2_bases))):
             base_coordinates = p2_bases[i].get_coords()
             if coords == tuple(base_coordinates):
                 p2_bases.pop(i)
-        for i in range(len(p1_factories)):
+        for i in reversed(range(len(p1_factories))):
             factory_coordinates = p1_factories[i].get_coords()
             if coords == tuple(factory_coordinates):
                 p1_factories.pop(i)   
-        for i in range(len(p2_factories)):
+        for i in reversed(range(len(p2_factories))):
             factory_coordinates = p2_factories[i].get_coords()
             if coords == tuple(factory_coordinates):
                 p2_factories.pop(i)
+
 
 def coup(x,y,level,player):
     radius = 0
@@ -173,18 +175,10 @@ def coup(x,y,level,player):
     if(challenge):
         success = True
         if(level == 1):
-            # if(randint(1,2) == 1):
-            #     success = False
             if randint(1, 2) == 1: success = False
         elif(level == 2):
-            # temp = randint(1,10)
-            # if(temp == 1 or temp == 2 or temp == 3):
-            #     success = False
             if randint(1, 10) in [1, 2, 3]: success = False
         else:
-            # temp = randint(1,10)
-            # if(temp == 1):
-            #     success = False
             if randint(1, 10) == 1: success = False
 
         if(success):
@@ -255,18 +249,37 @@ def spy_work(numberofspies):
     if (numberofspies > 0):
         i = 1
         while (i <= numberofspies):
-            spy_find_nums.append(i)
-            spy_find_nums.append(i + 50)
+            first = randint(1,100)
+            second = randint(1,100)
+            while ((first in spy_find_nums) and (second in spy_find_nums)):
+                first = randint(1,100)
+                second = randint(1,100)
+            spy_find_nums.append(first)
+            spy_find_nums.append(second)
             i += 1
         selected = randint(1,100)
         if ((selected in spy_find_nums) and (selected not in revealed_bases)):
             found_base = choice(p2_bases)
             revealed_bases.append(found_base)
             swapchar(found_base.xcoord, found_base.ycoord, key.p2_base)
-            
             return 1
         else:
             return 0
-            
-
-
+           
+def spy_loss(numberofspies, enemyspies):
+   
+    enemy_spy_hits = []
+    if ((numberofspies > 0) and (enemyspies > 0)):
+        i = 1
+        while (i <= enemyspies):
+            first = randint(1,100)
+            second = randint(1,100)
+            while ((first in enemy_spy_hits) and (second in enemy_spy_hits)):
+                first = randint(1,100)
+                second = randint(1,100)
+            enemy_spy_hits.append(first)
+            enemy_spy_hits.append(second)
+            i += 1
+        chosen = randint(1,100)
+        if (chosen in enemy_spy_hits):
+            numberofspies -= 1

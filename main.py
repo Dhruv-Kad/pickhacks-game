@@ -64,11 +64,13 @@ def shop():
                 f.write(f"Nuke -> {x}, {y}\n")
         # spy case
         case 2:
+            
             if p1_money >= p1_spy_price:
                 p1_money -= p1_spy_price
                 global p1_spies
                 spy_addition(p1_spies, p1_spy_price)
                 p1_spies += 1
+                tension += 1
                 f.write(f"Spy purchased\n")
         # factory case
         case 3:
@@ -80,7 +82,6 @@ def shop():
                     x, y = coordinate_entry("Enter factory coordinates: ")
                     validity = build_factory(x, y, 1)
                 global p1_income
-                p1_income = 500 + 250 * len(p1_factories)
                 p1_income = 500 + 250 * len(p1_factories)
                 f.write(f"Factory -> {x}, {y}\n")
         # coup case
@@ -105,13 +106,15 @@ def shop():
 def print_hud(ai_choice):
 
     spy_detection = spy_work(p1_spies)
+    spy_casualties = spy_loss(p1_spies, p2_spies)
     print_map()
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
-    
+   
     print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
+
 
     if (ai_choice == 1):
         print ("The enemy has launched a nuke!")
@@ -126,6 +129,7 @@ def print_hud(ai_choice):
         print ("The enemy has built a base!")
         ai_choice = 0
 
+
     if (spy_detection == 1):
         print("Your spies have found a base!")
     elif (spy_detection == 0):
@@ -133,17 +137,26 @@ def print_hud(ai_choice):
     else:
         print()
     print()
-    
+
+
+    if (spy_casualties == 1):
+        print("One of your spies has been captured!")
+    else:
+        print()
+    print()
+   
 # show menu and set difficulty
 difficulty = menu.menu()
 
+
 match difficulty:
-    case "easy":
+    case "war":
         difficulty = 1
-    case "medium":
+    case "is":
         difficulty = 2
-    case "hard":
+    case "hell":
         difficulty = 3
+
 
 # place enemy bases into random positions i'm so tired
 for i in range(difficulty):
@@ -152,7 +165,7 @@ for i in range(difficulty):
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
     # uncomment for seeing intial enemy base
-    # swapchar(x, y, "A")
+    #swapchar(x, y, "A") # comment this out later
     p2_bases.append(starting_enemy_base)
 
 while True:
@@ -209,6 +222,7 @@ while True:
                 ai_choice = 3
 
                 
+                p2_income = 500 + 250 * len(p2_factories)
 
     if p1_bases == []:
         loss.youlose()
