@@ -48,7 +48,3 @@ def parabola(ex, ey, x_offset, y_offset):
             coord_list.append((i, round(fx)))
 
     return coord_list
-
-# a = int(input("enter point x to target"))
-# b = int(input("enter point y to target"))
-# print(parabola(a, b, -3, 3))

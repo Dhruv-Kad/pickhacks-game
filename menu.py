@@ -74,4 +74,3 @@ def setup2():
     p2ycoord = int(input("Y Coordinate: "))
     while (p2ycoord < 1 or p2xcoord > 87):
         p2ycoord = int(input("Please select a valid coordinate: "))
-menu()

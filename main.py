@@ -3,6 +3,7 @@ import os
 import menu
 import building_info
 from random import randint
+import enemyai
 
 f = open("log.txt", "w")
 
@@ -123,7 +124,6 @@ for i in range(difficulty):
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
     p2_bases.append(starting_enemy_base)
-    swapchar(x, y, key.p2_base)
 
 while True:
     # this just clears the terminal
@@ -139,7 +139,34 @@ while True:
         shop()
 
     if current_player == 2:
-        
-
+        enemy_choice, priceofsel = enemyai.enemyturn(len(p1_factories), len(p1_bases), difficulty, tension, p2_money, p2_spy_price, p2_factory_price, nuke_price)
+        # while True:
+        #     print(enemy_choice)
+        match enemy_choice:
+            case 1:
+                # while True:
+                #     print("hi")
+                # nuke if tension = 9, coup otherwise
+                x, y = enemyai.confirmarea()
+                if tension == 9:
+                    p2_money -= priceofsel
+                    bomb(x, y, 2)
+                    # f.write(f"Nuke -> {x}, {y}\n")
+                else:
+                    build_base(x, y, 2)
+            case 2:
+                # while True:
+                #     print("hi")
+                p2_money -= priceofsel
+                spy_addition(p2_spies, p2_spy_price)
+                p2_spies += 1
+                # spy case
+            case 3:
+                # while True:
+                #     print("hi")
+                # factory cas
+                p2_money -= priceofsel
+                x, y = enemyai.confirmarea()
+                build_factory(x, y, 2)
 
 f.close()
