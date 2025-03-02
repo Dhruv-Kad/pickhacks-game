@@ -15,13 +15,10 @@ def menu():
     print(f"{' /    \\':<29} {'/    \\ ':>29}")
     print(f"{'|':-^59}")
     print(f"{'1. 1 Player':^59}")
-    print(f"{'2. 2 Player (probably unused)':^59}")
-    print(f"{'3. Exit':^59}")
+    print(f"{'2. Exit':^59}")
     choice = input("Please select an option(type a number): ")
     if (choice == "1"):
         return setup1()
-    elif (choice == "2"):
-        setup2()
 
 #ASks for coordinate for stater base
 def p1coord_validation():
