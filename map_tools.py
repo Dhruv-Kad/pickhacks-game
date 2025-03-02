@@ -220,16 +220,17 @@ def build_factory(x, y, player):
             p1_factories.append(factory)
             return True
         return False
-    for coords in base_connection:
-        for base in p2_bases:
-            if((coords[0] == base.xcoord) and (coords[1] == base.ycoord)):
-                valid_placement = True
-    if(valid_placement):
-        swapchar(x, y, key.p2_factory)
-        factory = building(x, y, "factory", True, 2)
-        factory = building(x, y, "factory", True, 2)
-        p2_factories.append(factory)
-        return True
+    if(player == 2):
+        for coords in base_connection:
+            for base in p2_bases:
+                if((coords[0] == base.xcoord) and (coords[1] == base.ycoord)):
+                    valid_placement = True
+        if(valid_placement):
+            swapchar(x, y, key.p2_factory)
+            factory = building(x, y, "factory", True, 2)
+            factory = building(x, y, "factory", True, 2)
+            p2_factories.append(factory)
+            return True
     return False
 
 # Constructs a base for the given player at given x, y coordinates
