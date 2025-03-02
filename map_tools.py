@@ -17,6 +17,7 @@ p1_bases = []
 p2_bases = []
 p1_factories = []
 p2_factories = []
+revealed_bases = []
 
 worldMap = [
 '................................#.#....................................................',
@@ -250,12 +251,14 @@ def spy_work(numberofspies):
             spy_find_nums.append(i + 50)
             i += 1
         selected = randint(1,100)
-        if (selected in spy_find_nums):
+        if ((selected in spy_find_nums) and (selected not in revealed_bases)):
             found_base = choice(p2_bases)
+            revealed_bases.append(found_base)
             swapchar(found_base.xcoord, found_base.ycoord, key.p2_base)
             
             return 1
         else:
             return 0
             
+
 
