@@ -241,7 +241,6 @@ def build_base(x, y, player):
         p1_bases.append(base)
         return
     
-    swapchar(x, y, key.p2_base)
     base = building(x, y, "base", False, 2)
     p2_bases.append(base)
     return
