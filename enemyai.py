@@ -3,9 +3,9 @@ import key
 import map_tools
 
 def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_price, factory_price, nuke_price):
-    nuke_weight = 1 + abs(((1 * difficulty * 1) * (playerbunkers * 0.6) * (playerfactories * 1.1) * tension * 1.5) * (money / 3))
-    spy_weight = 1 + abs(((1 * difficulty) * (playerbunkers * 0.4) * (abs(tension - 10) + 1) * (money / 3)))
-    factory_weight = 1 + abs(((1 * difficulty) * (1.1) * (abs(tension - 8) + 1) * (money / 2)))
+    nuke_weight = 1 + abs((difficulty ** 2) * (playerbunkers) * (tension + 1) * (money * 1.2))
+    spy_weight = 1 + abs(((2 * playerbunkers ** 0.25) * (abs(3 - tension)) * (money)))
+    factory_weight = 1 + abs(((1.1 * difficulty) * (abs(tension - 8)) * (money ** 0.875)))
     
     
     prices = [nuke_price, spy_price, factory_price]

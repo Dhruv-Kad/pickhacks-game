@@ -15,7 +15,7 @@ turn_counter = 0
 
 current_player = 2
 
-p1_money = 750
+p1_money = 500
 p1_income = 500
 p1_spies = 0
 p2_money = 750
@@ -78,7 +78,8 @@ def shop():
                     x, y = coordinate_entry("Enter factory coordinates: ")
                     validity = build_factory(x, y, 1)
                 global p1_income
-                p1_income += 250
+                p1_income = 500 + 250 * len(p1_factories)
+                p1_income = 500 + 250 * len(p1_factories)
                 f.write(f"Factory -> {x}, {y}\n")
         # coup case
         case 4:
@@ -128,7 +129,8 @@ for i in range(difficulty):
     while get_char(x, y) != key.land:
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
-    swapchar(x, y, "A")
+    # uncomment for seeing intial enemy base
+    # swapchar(x, y, "A")
     p2_bases.append(starting_enemy_base)
 
 while True:
@@ -140,32 +142,31 @@ while True:
     if current_player == 1:
         p1_money += p1_income
         turn_counter += 1
-        f.write(f"Turn {turn_counter} - Player {current_player} - ")
+        f.write(f"Turn {turn_counter} - Player 1 - ")
         print_hud()
         shop()
 
     if current_player == 2:
         enemy_choice, priceofsel = enemyai.enemyturn(len(p1_factories), len(p1_bases), difficulty, tension, p2_money, p2_spy_price, p2_factory_price, nuke_price)
-        # while True:
-        #     print(enemy_choice)
+        f.write(f"Turn {turn_counter} - Player 2 - ")
         match enemy_choice:
             case 1:
-                # while True:
-                #     print("hi")
                 # nuke if tension = 9, coup otherwise
                 x, y = enemyai.confirmarea()
                 if tension == 9:
                     p2_money -= priceofsel
                     bomb(x, y, 2)
-                    # f.write(f"Nuke -> {x}, {y}\n")
+                    f.write(f"Nuke -> {x}, {y}\n")
                 else:
                     build_base(x, y, 2)
+                    f.write(f"Coup -> {x}, {y}\n")
             case 2:
                 # while True:
                 #     print("hi")
                 p2_money -= priceofsel
                 spy_addition(p2_spies, p2_spy_price)
                 p2_spies += 1
+                f.write(f"Spy purchased\n")
                 # spy case
             case 3:
                 # while True:
@@ -174,11 +175,15 @@ while True:
                 p2_money -= priceofsel
                 x, y = enemyai.confirmarea()
                 build_factory(x, y, 2)
+                p2_income = 500 + 250 * len(p2_factories)
+                f.write(f"Factory -> {x}, {y}\n")
 
     if p1_bases == []:
         loss.youlose()
+        f.write("Player 2 Wins")
         break
     if p2_bases == []:
         win.youwin()
+        f.write("Player 1 Wins")
         break
 f.close()
