@@ -89,7 +89,10 @@ def shop():
                 p1_money -= (coup_base_price * (0.5 * coup_level + 0.5))
                 x, y = coordinate_entry("Enter coup coordinates: ")
                 # hardcoded to p1 right now
-                coup(x, y, coup_level, 1)
+                if(coup(x, y, coup_level, 1)):
+                    tension += 1
+                else:
+                    tension += 2
                 f.write(f"Coup {coup_level} -> {x}, {y}\n")
         # cat named windex case
         case 5:
