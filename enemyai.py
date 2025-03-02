@@ -2,9 +2,9 @@ import random
 import map_tools
 
 def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_price, factory_price, nuke_price):
-    nuke_weight = 1 + ((1 * difficulty * 1) * (playerbunkers * 0.6) * (playerfactories * 0.1) * tension * 1.5) * (money / 3)
-    spy_weight = 1 + ((1 * difficulty) * (playerbunkers * 0.4) * (abs(tension - 9) + 1) * (money / 3))
-    factory_weight = 1 + ((1 * difficulty) * (1.1) * (abs(tension - 10) + 1) * (money / 2))
+    nuke_weight = 1 + abs(((1 * difficulty * 1) * (playerbunkers * 0.6) * (playerfactories * 0.1) * tension * 1.5) * (money / 3))
+    spy_weight = 1 + abs(((1 * difficulty) * (playerbunkers * 0.4) * (abs(tension - 9) + 1) * (money / 3)))
+    factory_weight = 1 + abs(((1 * difficulty) * (1.1) * (abs(tension - 10) + 1) * (money / 2)))
     
     print(f"nuke_weight {nuke_weight} spy_weight {spy_weight} factory_weight {factory_weight}")
     
@@ -64,6 +64,7 @@ def aibomb():
 
 
 if __name__ == "__main__":
-    map_tools.print_map()
-    aibomb()
-    map_tools.print_map()
+    w = 15
+    while w > 15:
+        weighttester()
+        w -= 1
