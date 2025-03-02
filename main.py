@@ -34,6 +34,8 @@ p1_base_coords = []
 p2_factory_coords = []
 p2_base_coords = []
 
+ai_choice = 0
+
 def returnmoney():
     return p1_money
 def shop():
@@ -96,7 +98,7 @@ def shop():
 
 # Prints the hud
 # Contains (top to bottom) world map, tension meter, income, spy effectiveness
-def print_hud():
+def print_hud(ai_choice):
 
     spy_detection = spy_work(p1_spies)
     print_map()
@@ -106,11 +108,26 @@ def print_hud():
     print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
+    print(ai_choice)
+    if (ai_choice == 2):
+        print ("The enemy has hired a spy!")
+        ai_choice = 0
+    elif (ai_choice == 3):
+        print ("The enemy has built a factory!")
+        ai_choice = 0
+    elif (ai_choice == 4):
+        print ("The enemy has built a base!")
+        ai_choice = 0
+    print(ai_choice)
+
     if (spy_detection == 1):
         print("Your spies have found a base!")
     elif (spy_detection == 0):
         print("Your spies have found nothing so far.")
+    else:
+        print()
     print()
+    
 # show menu and set difficulty
 difficulty = menu.menu()
 
@@ -140,7 +157,7 @@ while True:
         p1_money += p1_income
         turn_counter += 1
         f.write(f"Turn {turn_counter} - Player {current_player} - ")
-        print_hud()
+        print_hud(ai_choice)
         shop()
 
     if current_player == 2:
@@ -159,6 +176,7 @@ while True:
                     # f.write(f"Nuke -> {x}, {y}\n")
                 else:
                     build_base(x, y, 2)
+                    ai_choice = 4
             case 2:
                 # while True:
                 #     print("hi")
@@ -166,13 +184,21 @@ while True:
                 spy_addition(p2_spies, p2_spy_price)
                 p2_spies += 1
                 # spy case
+                ai_choice = 2
             case 3:
+                
                 # while True:
                 #     print("hi")
                 # factory cas
                 p2_money -= priceofsel
                 x, y = enemyai.confirmarea()
-                build_factory(x, y, 2)
+                aivalidty = build_factory(x, y, 2)
+                while aivalidty == False:
+                    x, y = enemyai.confirmarea()
+                    aivalidty = build_factory(x, y, 2)
+                ai_choice = 3
+
+                
 
     if p1_bases == []:
         loss.youlose()

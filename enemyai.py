@@ -2,6 +2,8 @@ import random
 import key
 import map_tools
 
+ai_choice = 0
+
 def enemyturn(playerfactories, playerbunkers, difficulty, tension, money, spy_price, factory_price, nuke_price):
     nuke_weight = 1 + abs(((1 * difficulty * 1) * (playerbunkers * 0.6) * (playerfactories * 1.1) * tension * 1.5) * (money / 3))
     spy_weight = 1 + abs(((1 * difficulty) * (playerbunkers * 0.4) * (abs(tension - 10) + 1) * (money / 3)))
@@ -60,7 +62,6 @@ def aibomb():
     x, y = confirmarea()
     #Add in a better check for if bomb is in safe radius
     map_tools.bomb(x,y,2)
-
 
 
 if __name__ == "__main__":
