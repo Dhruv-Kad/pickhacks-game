@@ -36,8 +36,6 @@ def parabola(ex, ey, x_offset, y_offset):
     y = (amatrix_backup_b[1][3] / amatrix_backup_b[1][1]) - (amatrix_backup_b[1][2] / amatrix_backup_b[1][1]) * z
     x = (amatrix_backup_a[0][3] / amatrix_backup_a[0][0]) - (amatrix_backup_a[0][1] / amatrix_backup_a[0][0]) * y - (amatrix_backup_a[0][2] / amatrix_backup_a[0][0]) * z
 
-    print(x, y, z)
-
     coord_list = []
     # map width
     for i in range(ex + 1):
