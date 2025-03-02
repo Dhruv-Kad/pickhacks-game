@@ -53,7 +53,7 @@ def shop():
     print(f"1. nuke    | ${nuke_price}")
     print(f"2. spy     | ${p1_spy_price} [Increases percent chance to reveal an enemy base each round by 2%]")
     print(f"3. factory | ${p1_factory_price} [Increase money earned every round $250] (You can only build a factory ten units away from a base)")
-    print(f"4. coup    | ${coup_base_price} / {round(coup_base_price * 1.5)} / {coup_base_price * 2} [Searches for base in a radius and takes it over base on size of the radius. Smaller radius = higher takeover chance]")
+    print(f"4. coup    | ${coup_base_price} / {round(coup_base_price * 1.5)} / {coup_base_price * 2} [Takes over a square, risking conflict if there is an enemy base within a radius. More expensive coups lower this radius")
     print(f"5. pass")
 
     # input validation
