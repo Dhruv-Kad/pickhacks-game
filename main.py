@@ -106,13 +106,15 @@ def shop():
 def print_hud(ai_choice):
 
     spy_detection = spy_work(p1_spies)
+    spy_casualties = spy_loss(p1_spies, p2_spies)
     print_map()
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
-    
+   
     print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
+
 
     if (ai_choice == 1):
         print ("The enemy has launched a nuke!")
@@ -127,6 +129,7 @@ def print_hud(ai_choice):
         print ("The enemy has built a base!")
         ai_choice = 0
 
+
     if (spy_detection == 1):
         print("Your spies have found a base!")
     elif (spy_detection == 0):
@@ -134,17 +137,26 @@ def print_hud(ai_choice):
     else:
         print()
     print()
-    
+
+
+    if (spy_casualties == 1):
+        print("One of your spies has been captured!")
+    else:
+        print()
+    print()
+   
 # show menu and set difficulty
 difficulty = menu.menu()
 
+
 match difficulty:
-    case "easy":
+    case "war":
         difficulty = 1
-    case "medium":
+    case "is":
         difficulty = 2
-    case "hard":
+    case "hell":
         difficulty = 3
+
 
 # place enemy bases into random positions i'm so tired
 for i in range(difficulty):
