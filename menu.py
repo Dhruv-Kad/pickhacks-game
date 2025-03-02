@@ -29,7 +29,9 @@ def p1coord_validation():
     map_tools.print_map()
     while (True):
         x, y = map_tools.coordinate_entry("Please select the coordinates for your first base: ")
-        map_tools.swapchar(x, y, key.p1_base)
+        map_tools.build_base(x, y, 1)
+        # map_tools.p1_bases.a
+        # map_tools.swapchar(x, y, key.p1_base)
         break
 
 def setup1():

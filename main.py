@@ -4,6 +4,8 @@ import menu
 import building_info
 from random import randint
 import enemyai
+import loss
+import win
 
 f = open("log.txt", "w")
 
@@ -41,6 +43,8 @@ def shop():
     print(f"3. factory | ${p1_factory_price}")
     print(f"4. coup    | ${coup_base_price} / {round(coup_base_price * 1.5)} / {coup_base_price * 2}")
     print(f"5. pass")
+    print(p1_bases)
+    print(p2_bases)
 
     # input validation
     choice = input("Select an item to buy: ")
@@ -123,6 +127,7 @@ for i in range(difficulty):
     while get_char(x, y) != key.land:
         x, y = randint(0, 86), randint(0, 24)
     starting_enemy_base = building_info.building(x, y, "bunker", True, 2)
+    swapchar(x, y, "A")
     p2_bases.append(starting_enemy_base)
 
 while True:
@@ -169,4 +174,10 @@ while True:
                 x, y = enemyai.confirmarea()
                 build_factory(x, y, 2)
 
+    if p1_bases == []:
+        loss.youlose()
+        break
+    if p2_bases == []:
+        win.youwin()
+        break
 f.close()

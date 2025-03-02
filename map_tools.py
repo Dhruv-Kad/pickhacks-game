@@ -128,6 +128,14 @@ def bomb(x, y, r):
     for coords in get_coords_in_circle(x, y, r):
         if get_char(*coords) != ".":
             swapchar(*coords, key.land_nuked)
+        for i in range(len(p1_bases)):
+            base_coordinates = p1_bases[i].get_coords()
+            if coords == tuple(base_coordinates):
+                p1_bases.pop(i)
+        for i in range(len(p2_bases)):
+            base_coordinates = p2_bases[i].get_coords()
+            if coords == tuple(base_coordinates):
+                p2_bases.pop(i)
 
 def coup(x,y,level,player):
     radius = 0
