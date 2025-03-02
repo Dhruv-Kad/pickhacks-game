@@ -38,9 +38,6 @@ ai_choice = 0
 
 def map_key():
     print(f"-MAP--KEY-")
-    print ("water | .")
-    print ("land | #")
-    print ("land_nuked | ⌗")
     print ("p1_factory | f")
     print ("p2_factory | F")
     print ("p1_base | b")
@@ -115,6 +112,7 @@ def shop():
             f.write("Pass\n")
             pass
 
+
 # Prints the hud
 # Contains (top to bottom) world map, tension meter, income, spy effectiveness
 def print_hud(ai_choice):
@@ -125,7 +123,6 @@ def print_hud(ai_choice):
     print_tension(tension)
     print(f"{'TURN ' + str(turn_counter):^89}")
    
-    print()
     print(f"${p1_money} | +${p1_income} per round")
     print(f"{p1_spies * 2:.2f}% chance to reveal enemy base")
 
@@ -151,15 +148,13 @@ def print_hud(ai_choice):
     else:
         print()
     
-
-
     if (spy_casualties == 1):
         print("One of your spies has been captured!")
     else:
         print()
     map_key()
     print()
-    print()
+
 # show menu and set difficulty
 difficulty = menu.menu()
 
